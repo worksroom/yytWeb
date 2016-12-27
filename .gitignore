@@ -1,0 +1,15 @@
+*.iml
+*.ipr
+*.iws
+.gradle/
+target/
+build/
+bin/
+tags
+bin
+dist
+classes
+build
+release
+web/WEB-INF/classes
+.idea
