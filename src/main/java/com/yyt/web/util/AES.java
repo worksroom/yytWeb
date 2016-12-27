@@ -123,7 +123,7 @@ public class AES {
 //        System.out.println(encrypt("1138104363651"));
 //        System.out.println(parseByte2HexStr(encrypt("1138104363651",password)));
         StringBuilder sb = new StringBuilder("");
-        sb.append("1").append("13810436365").append("1");
+        sb.append("1").append("13909098766").append("4");
         String encode = AES.encrypt(sb.toString());
         System.out.println(encode);
 

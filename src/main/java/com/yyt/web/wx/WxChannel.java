@@ -94,8 +94,7 @@ public class WxChannel {
         return this.access_token;
     }
 
-    //获取带参数的临时二维码
-    public JSONObject imgTicket(String param){
+    private JSONObject wx_imgTicket(String param){
         int expire_seconds = 2592000;
         String action_name = "QR_LIMIT_STR_SCENE";
         JSONObject json = new JSONObject();
@@ -106,7 +105,6 @@ public class WxChannel {
         scene.put("scene_str",param);
         action_info.put("scene",scene);
         json.put("action_info",action_info);
-        this.getToken(0);
 
         String url = this.imgTicket_url + this.access_token ;
 
@@ -116,6 +114,28 @@ public class WxChannel {
 
         try{
             wx_result = JSONObject.parseObject(result);
+
+        }catch (Exception e){
+            wx_result = new JSONObject();
+            wx_result.put("errcode",-1);
+        }
+
+        return wx_result;
+    }
+
+    //获取带参数的临时二维码
+    public JSONObject imgTicket(String param){
+
+        this.getToken(0);
+        JSONObject wx_result;
+
+        try{
+            wx_result = wx_imgTicket(param);
+            int errcode = wx_result.getIntValue("errcode");
+            if(errcode==42001){
+                this.getToken(1);
+                wx_result = wx_imgTicket(param);
+            }
         }catch (Exception e){
             wx_result = new JSONObject();
             wx_result.put("errcode",-1);
