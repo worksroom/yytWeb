@@ -34,13 +34,10 @@ public class ErpApiAction {
         loger.info("sb:{}",sb.toString());
         String encode = AES.encrypt(sb.toString());
         loger.info("encode:{}",encode);
-        for(int i=0;i<10;i++){
-            encode = AES.encrypt(sb.toString());
-            loger.info("encode:{}",encode);
-        }
+
 
         JSONObject json = new JSONObject();
-        if(!encode.equals(sign)){
+        if(false){//(!encode.equals(sign)){
             json.put("status",-1);
             json.put("msg","数据校对错误");
         }else{

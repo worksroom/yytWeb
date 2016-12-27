@@ -55,7 +55,7 @@ public class WxAction {
                 break;
         }
 
-        return "";
+        return "success";
     }
 
 

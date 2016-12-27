@@ -236,9 +236,10 @@ public class WxChannel {
         return uuid.toString();
     }
     public static void main(String[] args){
-        WxChannel channel = WxChannelCache.getWxChannel();
-        System.out.println(channel.imgTicket("1234"));
-
+//        WxChannel channel = WxChannelCache.getWxChannel();
+//        System.out.println(channel.imgTicket("1234"));
+        String value ="1_3";
+        System.out.println(value.split("_")[1]);
 
     }
 }
