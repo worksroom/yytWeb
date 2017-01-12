@@ -26,7 +26,8 @@ public class ERPNotice {
                     StringBuilder temp_url = new StringBuilder(url);
                     temp_url.append("?userid=").append(params[0]).append("&").append("partnerid=")
                             .append(uid).append("&sign=").append(encode);
-                    Response<String> res =  HttpUtil.sendGet(url, null, "utf-8");
+                    loger.info("url:{}",temp_url);
+                    Response<String> res =  HttpUtil.sendGet(temp_url.toString(), null, "utf-8");
                     if("0000".equals(res.getCode())){
                         loger.info("erp return:{}",res);
                         JSONObject json = JSONObject.parseObject(res.getMsg());

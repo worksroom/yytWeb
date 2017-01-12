@@ -2,6 +2,7 @@ package com.yyt.web.wx;
 
 
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.youguu.core.logging.Log;
 import com.youguu.core.logging.LogFactory;
@@ -47,6 +48,9 @@ public class WxChannel {
 
 
     private String imgTicket_url = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=";
+
+    //公众号发送模板消息
+    private String send_msg_url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=";
 
     /**
      * token
@@ -94,6 +98,50 @@ public class WxChannel {
         return this.access_token;
     }
 
+    private JSONObject sendMsg(String openid,String template_id,String url,JSONObject msg){
+        String wx_url = this.send_msg_url + this.access_token ;
+        JSONObject json = new JSONObject();
+        json.put("touser",openid);
+        json.put("template_id",template_id);
+        json.put("url",url);
+        json.put("data",msg);
+        String result = HttpsClient.getClient().doPost(wx_url, json.toJSONString());
+
+        JSONObject wx_result;
+        try{
+            wx_result = JSONObject.parseObject(result);
+        }catch (Exception e){
+            wx_result = new JSONObject();
+            wx_result.put("errcode",-1);
+        }
+
+        return wx_result;
+    }
+
+    public JSONObject wxSendMsg(String openid,String template_id,String url,JSONObject msg){
+
+        this.getToken(0);
+        JSONObject wx_result;
+
+        try{
+            wx_result = sendMsg(openid,template_id,url,msg);
+            int errcode = wx_result.getIntValue("errcode");
+            if(errcode==42001){
+                this.getToken(1);
+                wx_result = sendMsg(openid,template_id,url,msg);
+            }
+        }catch (Exception e){
+            wx_result = new JSONObject();
+            wx_result.put("errcode",-1);
+        }
+
+        return wx_result;
+    }
+    /**
+     * 获取二维码
+     * @param param
+     * @return
+     */
     private JSONObject wx_imgTicket(String param){
         int expire_seconds = 2592000;
         String action_name = "QR_LIMIT_STR_SCENE";
@@ -231,15 +279,40 @@ public class WxChannel {
         return response;
     }
 
+
+
+    public  String getView(){
+        JSONObject json = new JSONObject();
+        JSONArray buttons = new JSONArray();
+        JSONObject b1 = new JSONObject();
+        b1.put("name","印刷报价");
+        b1.put("type","view");
+        b1.put("url","http://123.56.121.21:8080/price/control/appLogin.do?customerNO=101003");
+        buttons.add(b1);
+
+        JSONObject b2 = new JSONObject();
+        b2.put("name","DIY相册");
+        b2.put("type","view");
+        b2.put("url","http://bjftfh.shop.1651ky.cn/index.aspx");
+        buttons.add(b2);
+
+        json.put("button",buttons);
+
+        return json.toJSONString();
+    }
+
     public static  String getnoncestr(){
         UUID uuid = UUID.randomUUID();
         return uuid.toString();
     }
     public static void main(String[] args){
-//        WxChannel channel = WxChannelCache.getWxChannel();
+        WxChannel channel = WxChannelCache.getWxChannel();
+
+        System.out.println(channel.getToken(0));
+        System.out.println(channel.getView());
 //        System.out.println(channel.imgTicket("1234"));
-        String value ="1_3";
-        System.out.println(value.split("_")[1]);
+//        String value ="1_3";
+//        System.out.println(value.split("_")[1]);
 
     }
 }

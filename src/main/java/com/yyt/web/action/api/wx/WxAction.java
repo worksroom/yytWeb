@@ -2,6 +2,7 @@ package com.yyt.web.action.api.wx;
 
 import com.youguu.core.logging.Log;
 import com.youguu.core.logging.LogFactory;
+import com.yyt.web.action.api.erp.TempOpenid;
 import com.yyt.web.erp.ERPNotice;
 import com.yyt.web.wx.WechatMessageUtil;
 import org.springframework.stereotype.Controller;
@@ -32,10 +33,11 @@ public class WxAction {
                           @QueryParam("timestamp") String timestamp,
                           @QueryParam("nonce") String nonce,
                           @QueryParam("echostr") String echostr,
-                          @QueryParam("openid") String openid,
                           @Context HttpServletRequest request){
         Map<String, String> map = WechatMessageUtil.xmlToMap(request);
         String event = map.get("Event");
+        loger.info("data:{}",map.toString());
+        String open_id = map.get("FromUserName");
         String eventKey;
         switch (event){
             case WechatMessageUtil.MESSAGE_EVENT_SUBSCRIBE:
@@ -43,13 +45,23 @@ public class WxAction {
                 eventKey = map.get("EventKey");
                 String param = eventKey.substring(eventKey.indexOf("_")+1);
                 loger.info("param:{}",param);
-                ERPNotice.user_regist(param,224);
+                int uid = TempOpenid.isExits(open_id);
+                if(uid==0){
+                    uid = TempOpenid.getUid();
+                    TempOpenid.addOpenid(open_id,uid);
+                }
+                ERPNotice.user_regist(param,uid);
                 break;
             case  WechatMessageUtil.MESSAGE_EVENT_SCAN:
                 //扫描二维码 已关注
                 eventKey = map.get("EventKey");
                 loger.info("param:{}",eventKey);
-                ERPNotice.user_regist(eventKey,224);
+                uid = TempOpenid.isExits(open_id);
+                if(uid==0){
+                    uid = TempOpenid.getUid();
+                    TempOpenid.addOpenid(open_id,uid);
+                }
+                ERPNotice.user_regist(eventKey,uid);
                 break;
             default:
                 break;

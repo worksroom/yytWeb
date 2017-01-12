@@ -1,8 +1,10 @@
 package com.yyt.web.action.api.erp;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.youguu.core.logging.Log;
 import com.youguu.core.logging.LogFactory;
+import com.yyt.web.action.api.erp.msg.SendMsg;
 import com.yyt.web.util.AES;
 import com.yyt.web.wx.WxChannel;
 import com.yyt.web.wx.WxChannelCache;
@@ -53,6 +55,56 @@ public class ErpApiAction {
                 json.put("url","https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket="+wx_result.getString("ticket"));
             }
         }
+        return json.toJSONString();
+    }
+
+    /**
+     * 订单消息
+     * @return
+     */
+    @POST
+    @Path(value = "/ordermsg")
+    @Produces("text/html;charset=UTF-8")
+    public String orderMsg(@FormParam("type") int type,
+                           @FormParam("money") String money,
+                           @FormParam("data") String data,
+                           @FormParam("sign") String sign,
+                           @FormParam("uid") int uid){
+        JSONObject json = new JSONObject();
+        loger.info("type:{}",type);
+        loger.info("money:{}",money);
+        loger.info("data:{}",data);
+        loger.info("uid:{}",uid);
+        loger.info("sign:{}",sign);
+        json.put("status",0);
+        json.put("msg","发送成功");
+        JSONObject msg = JSON.parseObject(data);
+        switch (type){
+            case 0:
+                String openId = TempOpenid.getOpenid(uid);
+                if(openId==null){
+                    json.put("status",-1);
+                    json.put("msg","用户不存在");
+                }else{
+                    SendMsg.sendConfirmOrder(openId, msg);
+                }
+                break;
+            case 1:
+                openId = TempOpenid.getOpenid(uid);
+                if(openId==null){
+                    json.put("status",-1);
+                    json.put("msg","用户不存在");
+                }else{
+                    SendMsg.sendOrderStatus(openId,msg);
+                }
+                break;
+            default:
+                json.put("status",-1);
+                json.put("msg","不支持的type");
+                break;
+        }
+
+
         return json.toJSONString();
     }
 
