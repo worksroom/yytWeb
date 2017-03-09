@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <title></title>
+    <link rel="stylesheet" href="css/css.css"/>
+</head>
+<body>
+    <header class="header">
+        <img src="img/back.png" width="8" class="header-img" onclick="back()"> 首页
+    </header>
+    <section class="section">
+        <div class="search padding">
+            <input type="text" class="search-btn" id="searchLocation" placeholder="搜索全部商品">
+        </div>
+        <div class="banner white-bg"><img src="img/shopping/banner.png" alt=""></div>
+        <div class="clear"></div>
+
+
+    </section>
+    <footer class="footer footer-height white-bg">
+        <a class="homeTab active">
+            <em><img src="img/shopping/icon07.png" alt=""></em>
+            首页
+        </a>
+        <a class="homeTab" href="classify.html">
+            <em><img src="img/shopping/icon01.png" alt="" width="24"></em>
+            分类
+        </a>
+        <a class="homeTab" href="car.html">
+            <em><img src="img/icon03.png" alt=""></em>
+            购物车
+        </a>
+        <a class="homeTab" href="perfect.html">
+            <em><img src="img/shopping/icon03.png" alt=""></em>
+            我的
+        </a>
+    </footer>
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/JBasic.js"></script>
+    <script src="js/commonality.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/page/home.js"></script>
+    <script>
+        $(document).ready(function(){
+            var home = new Home();
+            home.getData();
+        });
+    </script>
+</body>
+</html>
