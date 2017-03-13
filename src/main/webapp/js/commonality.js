@@ -214,6 +214,43 @@ $(function(){
     $("#searchLocation").focus(function () {
         window.location="search.html";
     })
+
+    /*-----------------消息、联系人切换-----------*/
+    var tabA=$("#footer a");
+    tabA.click(function(){
+        var index=$(this).index();
+        $(".first").eq(index).show().siblings().hide();
+        if(!$(".first").eq(0).is(':hidden')){
+            tabA.eq(0).addClass("message-active").removeClass("message");
+        }else{
+            tabA.eq(0).addClass("message").removeClass("message-active");
+        };
+        if(!$(".first").eq(1).is(':hidden')){
+            tabA.eq(1).addClass("linkman-active").removeClass("linkman");
+        }else{
+            tabA.eq(1).addClass("linkman").removeClass("linkman-active");
+        }
+    })
+    /*----------------厂商供应及用户需求切换---------------------*/
+    var facturerTab=$("#facturer a");
+    facturerTab.click(function(){
+        var index=$(this).index();
+        $("#facturer a").eq(index).addClass("facturer-active").siblings().removeClass("facturer-active");
+        if (!$("#facturer a").eq(0).hasClass("facturer-active")){
+            $("#carImg").attr("src","img/zx/icon04.png");
+        }else {
+            $("#carImg").attr("src","img/zx/icon02.png");
+        };
+        if (!$("#facturer a").eq(1).hasClass("facturer-active")){
+            $("#needImg").attr("src","img/zx/icon03.png");
+        }else {
+            $("#needImg").attr("src","img/zx/icon05.png");
+        }
+        $(".hide").eq(index).show().siblings().hide();
+    })
+    $(".add-btn").click(function () {
+        $("#neverAll").toggle();
+    })
 })
 function back() {
     window.history.back();
@@ -231,4 +268,11 @@ function openPay() {//立即购买
     window.location="affirm.html";
 }function addLocation() {//添加地址完成
     window.location="address.html";
+}
+/*----------聊天页面跳转--------*/
+function  missZhao() {
+    window.location="chat.html";
+};
+function backUp(){
+    window.location="index.html";
 }
