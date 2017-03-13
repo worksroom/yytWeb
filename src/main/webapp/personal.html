@@ -14,16 +14,25 @@
     <section>
         <div class="section-top">
             <img src="img/personal/img02.png" alt="" width="60">
-            <p>JF00321</p>
+            <p id="nickname"></p>
         </div>
         <ul class="list">
-            <li>绑定手机号码 <span><input type="text" placeholder="请绑定手机号" class="input"></span></li>
-            <li>实名认证 <span><a class="input" href="real.html">*倩</a></span></li>
-            <li>卖家实名认证 <span><a class="input">晶艺印务印刷有限公司</a></span></li>
+            <li>绑定手机号码 <span><input type="text" placeholder="" class="input" id="phone"></span></li>
+            <li>实名认证 <span><a class="input" href="real.html" id="buyerName"></a></span></li>
+            <li>卖家实名认证 <span><a class="input" id="sellerName"></a></span></li>
             <li>收货地址管理 <span><a class="input" href="address.html">&nbsp;&nbsp;</a></span></li>
         </ul>
     </section>
     <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/JBasic.js"></script>
     <script src="js/commonality.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/page/personal.js"></script>
+    <script>
+        $(document).ready(function(){
+            var personal = new Personal();
+            personal.init();
+        });
+    </script>
 </body>
 </html>

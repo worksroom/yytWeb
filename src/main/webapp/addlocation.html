@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <title></title>
+    <link rel="stylesheet" href="css/css.css"/>
+    <link rel="stylesheet" href="css/area.css"/>
+</head>
+<body>
+    <header class="header">
+        <img src="img/back.png" width="8" class="header-img" onclick="back()"> 添加新地址
+    </header>
+    <section>
+        <div class="white-bg">
+            <div class="add-information">收货人 <span><input type="text" value="张艺兴" class="input-text" readonly></span></div>
+            <div class="add-information">联系电话 <span><input type="text" placeholder="输入手机号" class="input-text"></span></div>
+            <div class="add-information">
+                所在地区
+                <span class="area-width">
+                    <ul class="listArea none" data-role="none">
+                        <li class="summary-stock pad-right">
+                            <div class="dd">
+                                <div class="addrID"><div></div><b></b></div>
+                                <div class="store-selector">
+                                    <div class="text"><div data-role="none"></div></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </span>
+            </div>
+            <div class="add-information">
+                街道
+                <span>
+                    <input type="text" placeholder="请填写街道" class="input-text">
+                </span>
+            </div>
+            <div class="add-information margin-none">
+                <input type="text" class="inputs address-width" placeholder="请填写详细地址，不少于5个字">
+            </div>
+        </div>
+        <div class="check-box">
+            <div class="check-left">
+                <input type="checkbox" class="checks" id="checkBox">
+            </div>
+            <div class="check-right">
+                设置为默认地址
+            </div>
+        </div>
+        <div class="div-btn">
+            <input type="button" data-role="none" class="btn" onclick="addLocation()" value="确认">
+        </div>
+    </section>
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/commonality.js"></script>
+    <script src="js/location.js"></script>
+    <script>
+        //如果初始化为其他地区的，需要注意选择器的修改，传递不同的proid（省id），cityid：(市id) areaid：（县id），省市对应ID在location.js里面有定义，县id从京东动态加载
+        $('ul.listArea').Address({ proid: 642, cityid: 643, areaid: 1205 });//初始化Tab中的地址
+        $(".store-selector").find(".text div").html("请选择");//初始化文本框显示的地址
+    </script>
+</body>
+</html>

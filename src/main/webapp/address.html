@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <title></title>
+    <link rel="stylesheet" href="css/css.css"/>
+</head>
+<body>
+    <header class="header">
+        <img src="img/back.png" width="8" class="header-img" onclick="back()"> 地址管理
+    </header>
+    <section class="section" id="address_list">
+        <div class="address-box">
+            <div class="padding padding-bottom">
+                <p>张艺兴 <span>18233001234</span></p>
+                <p>北京市海淀区福缘门社区</p>
+            </div>
+            <div class="address-select">
+                <div class="address-check">
+                    <div class="check-left">
+                        <input type="checkbox" class="checks2" name="carCheckBox">
+                    </div>
+                    <div class="check-right address-widths">
+                        <em class="select select-color">设置为默认地址</em>
+                        <span>
+                            <a href="addlocation.html" class="margin-right"><img src="img/updata.png" width="18" alt="" class="img-middle"> 编辑</a>
+                            <a class="delete"><img src="img/delect.png" width="18" alt="" class="img-middle"> 删除</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="address-box margin">
+            <div class="padding padding-bottom">
+                <p>张艺兴 <span>18233001234</span></p>
+                <p>北京北京市东城区东华门街道王府井大街50号天伦王朝酒店</p>
+            </div>
+            <div class="address-select">
+                <div class="address-check">
+                    <div class="check-left">
+                        <input type="checkbox" class="checks" name="carCheckBox">
+                    </div>
+                    <div class="check-right address-widths">
+                        <em class="select">设置为默认地址</em>
+                        <span>
+                            <a href="addlocation.html" class="margin-right"><img src="img/updata.png" width="18" alt="" class="img-middle"> 编辑</a>
+                            <a class="delete"><img src="img/delect.png" width="18" alt="" class="img-middle"> 删除</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="address-box margin">
+            <div class="padding padding-bottom">
+                <p>张艺兴 <span>18233001234</span></p>
+                <p>北京北京市东城区东华门街道王府井大街50号天伦王朝酒时候还是店</p>
+            </div>
+            <div class="address-select">
+                <div class="address-check">
+                    <div class="check-left">
+                        <input type="checkbox" class="checks" name="carCheckBox">
+                    </div>
+                    <div class="check-right address-widths">
+                        <em class="select">设置为默认地址</em>
+                        <span>
+                            <a href="addlocation.html" class="margin-right"><img src="img/updata.png" width="18" alt="" class="img-middle"> 编辑</a>
+                            <a class="delete"><img src="img/delect.png" width="18" alt="" class="img-middle"> 删除</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="address-box margin">
+            <div class="padding padding-bottom">
+                <p>张艺兴 <span>18233001234</span></p>
+                <p>北京北京市东城区东华门街道王府井大街50号天伦王朝酒快捷键上丁俊晖店</p>
+            </div>
+            <div class="address-select">
+                <div class="address-check">
+                    <div class="check-left">
+                        <input type="checkbox" class="checks" name="carCheckBox">
+                    </div>
+                    <div class="check-right address-widths">
+                        <em class="select">设置为默认地址</em>
+                        <span>
+                            <a href="addlocation.html" class="margin-right"><img src="img/updata.png" width="18" alt="" class="img-middle"> 编辑</a>
+                            <a class="delete"><img src="img/delect.png" width="18" alt="" class="img-middle"> 删除</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <input type="button" class="add-location radius-none" onclick="openLocation()" value="添加新地址">
+    </footer>
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/JBasic.js"></script>
+    <script src="js/commonality.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/page/address.js"></script>
+    <script>
+        $(document).ready(function(){
+            var address = new Address();
+            address.init();
+        });
+    </script>
+</body>
+</html>

@@ -17,20 +17,20 @@ class Perfect {
                     if("0000"==status){
                         var result = data["result"];
                         //{"result":{"shop":0,"waitDelivery":0,"waitPay":0,"goods":0},"status":"0000"}
-                        if(result['shop']>0){
-                            $("#wait_pay").append('<div class="order-number">'+result['shop']+'</div>');
-                        }
-
-                        if(result['goods']>0){
-
-                        }
-
                         if(result['waitPay']>0){
-
+                            $("#wait_pay").append('<div class="order-number">'+result['waitPay']+'</div>');
                         }
 
                         if(result['waitDelivery']>0){
+                            $("#wait_delivery").append('<div class="order-number">'+result['waitDelivery']+'</div>');
+                        }
 
+                        if(result['shop']>0){
+                            $("#shop_num").append('('+result['shop']+')');
+                        }
+
+                        if(result['goods']>0){
+                            $("#goods_num").append('('+result['goods']+')');
                         }
 
                     }else{
@@ -42,7 +42,7 @@ class Perfect {
                 }
             },
             {},
-            {"userId": 1}
+            {"userId": "1"}
         );
     }
 }
