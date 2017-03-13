@@ -41,12 +41,12 @@ $(function(){
         $(".order-cont").eq(index).show().siblings().hide();
     })
     /*-------------所有宝贝分类---------*/
-    var tabMenu=$(".dotey li");
-    tabMenu.click(function () {
-        var index=$(this).index();
-        $(".dotey li").eq(index).addClass("active").siblings().removeClass("active");
-        $(".dotey-display").eq(index).show().siblings().hide();
-    })
+    //var tabMenu=$(".dotey li");
+    //tabMenu.click(function () {
+    //    var index=$(this).index();
+    //    $(".dotey li").eq(index).addClass("active").siblings().removeClass("active");
+    //    $(".dotey-display").eq(index).show().siblings().hide();
+    //})
     /*-----点击全选时，购物车按钮全部选中--------*/
     $("#allSelect").click(function(){
         if($(this).hasClass("checks2")){
@@ -174,27 +174,27 @@ $(function(){
         })
     })
     /*--------点击价钱时，由多到少--------*/
-    $(".dotey li:last-child").click(function () {
-        if($(this).hasClass("active")){
-            $(this).click(function () {
-                $(this).addClass("money-top");
-                $(this).click(function () {
-                    if($(this).hasClass("money-top")){
-                        $(this).addClass("money-down").removeClass("money-top");
-                    }else {
-                        $(this).removeClass("money-down").addClass("money-top");
-                    }
-                })
-            })
-        }
-    })
-    $(".dotey li:last-child").prevAll().click(function () {
-        if($(".dotey li:last-child").hasClass("money-top")){
-            $(".dotey li:last-child").removeClass("money-top");
-        }else{
-            $(".dotey li:last-child").removeClass("money-down");
-        }
-    })
+    //$(".dotey li:last-child").click(function () {
+    //    if($(this).hasClass("active")){
+    //        $(this).click(function () {
+    //            $(this).addClass("money-top");
+    //            $(this).click(function () {
+    //                if($(this).hasClass("money-top")){
+    //                    $(this).addClass("money-down").removeClass("money-top");
+    //                }else {
+    //                    $(this).removeClass("money-down").addClass("money-top");
+    //                }
+    //            })
+    //        })
+    //    }
+    //})
+    //$(".dotey li:last-child").prevAll().click(function () {
+    //    if($(".dotey li:last-child").hasClass("money-top")){
+    //        $(".dotey li:last-child").removeClass("money-top");
+    //    }else{
+    //        $(".dotey li:last-child").removeClass("money-down");
+    //    }
+    //})
     /*----------------删除地址----------------*/
     var deleteIncident=$(".delete");
     for(var i=0;i<deleteIncident.length;i++){

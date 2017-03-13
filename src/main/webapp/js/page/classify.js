@@ -63,7 +63,7 @@ class Classify {
                 $("#sec_class").append(ul);
             }
             var li = `<li>
-                            <a href="javascript:;">
+                            <a href="product_list.html?classId=${value["id"]}">
                                 <img src="${_this.imgurl+value["logo"]}" alt="" class="product-img">
                                 <p>${value["name"]}</p>
                             </a>

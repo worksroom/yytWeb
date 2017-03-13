@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <title></title>
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/JBasic.js"></script>
+    <script src="js/iscroll.js"></script>
+    <script src="js/commonality.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/page/product_detail.js"></script>
+    <script>
+        var scroll_pic_view = null;
+        $(document).ready(function(){
+            var detail = new ProductDetail();
+            detail.init();
+        });
+    </script>
+    <link rel="stylesheet" href="css/css.css"/>
+</head>
+<body>
+    <header class="header">
+        <img src="img/back.png" width="8" class="header-img" onclick="back()"> 商品详情
+    </header>
+    <section class="section">
+        <div class="scaled">
+            <div class="wraper">
+                <header id="scroll_pic_view" class="scroll_pic_view" style="overflow: hidden; ">
+                    <div id="scroll_pic_view_div">
+                        <ul id="scroll_pic_view_ul">
+
+
+
+                        </ul>
+                    </div>
+                    <div>
+                        <ol id="scroll_pic_nav" class="scroll_pic_nav">
+                            <!--<script src="js/page/product_detail_toutch.js"></script>-->
+                        </ol>
+                    </div>
+                </header>
+            </div>
+            <div class="white-bg padding lose-margin-top">
+                <p id="product_name">--</p>
+                <p class="pink margin-top"  id="product_price">
+                    <font class="font-size">￥</font><font>158.78</font><font class="font-size">/箱</font>
+                    <span class="color font-size">评价：200条</span>
+                </p>
+            </div>
+            <div class="select-product white-bg" id="selectModel">选择  产品型号 规格</div>
+            <div class="white-bg product-cont padding border-bot">
+                <p class="color font-size">型号</p>
+                <div class="model">
+                    <input type="button" class="cause-btn" value="POP-E 黄" />
+                    <input type="button" class="cause-btn" value="POP-E 红" />
+                    <input type="button" class="cause-btn active" value="POP-E 蓝" />
+                    <input type="button" class="cause-btn" value="POP-E 黑" />
+                    <input type="button" class="cause-btn" value="POP-E 白" />
+                </div>
+                <p class="color font-size">规格</p>
+                <div class="model">
+                    <input type="button" class="cause-btn active" value="12罐/箱" />
+                </div>
+                <p class="color font-size">数量</p>
+                <div class="list-margin">
+                    <div class="number model-number">
+                        <div class="subtract model-add" id="lose"></div>
+                        <div class="change-number model-subtract" id="modelNumber">2</div>
+                        <div class="add model-add" id="add"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="white-bg">
+                <div class="select-product white-bg">
+                    <p>评价(1502) <span class="font-red font-size font-padding">好评  96.7%</span></p>
+                </div>
+                <div class="padding border-bot margin-left text-p none-pad">
+                    <p>
+                        jf***1<i class="user"></i>
+                        <span class="color">2016-9-20</span>
+                    </p>
+                    <p>很好用，色彩很鲜艳</p>
+                    <p class="margin-top">
+                        <i class="color font-size">型号：POP-E 红  规格：12罐/箱</i>
+                        <span class="font-color">评论</span>
+                    </p>
+                </div>
+                <div class="padding text-p margin-left border-bot none-pad">
+                    <p>
+                        jf***1<i class="user"></i>
+                        <span class="color">2016-9-20</span>
+                    </p>
+                    <p>很好用，色彩很鲜艳很好用</p>
+                    <p class="margin-top">
+                        <i class="color font-size">型号：POP-E 红  规格：12罐/箱</i>
+                        <span class="font-color">评论</span>
+                    </p>
+                </div>
+                <div class="review">
+                    <div class="padding text-p margin-left border-bot none-pad">
+                        <p>
+                            jf***1<i class="user"></i>
+                            <span class="color">2016-9-20</span>
+                        </p>
+                        <p>很好用，色彩很鲜艳很好用，色彩很鲜艳很好用，色彩很鲜艳很好用，色彩很鲜艳很好用，色彩很鲜艳很好用，色彩很鲜艳</p>
+                        <p class="margin-top">
+                            <i class="color font-size">型号：POP-E 红  规格：12罐/箱</i>
+                            <span class="font-color">评论</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="white-bg font-color look border-bot" id="lookReview">
+                    查看全部评价
+                </div>
+            </div>
+            <div class="white-bg img100" id="product_content">
+                <div class="padding">产品介绍</div>
+
+            </div>
+        </div>
+        <div class="shade">
+            <div class="opacity"></div>
+            <div class="shade-box">
+                <div class="shade-cont">
+                    <div class="relative">
+                        <div class="shade-img-box">
+                            <div class="shade-img">
+                                <img src="img/product/img05.png" alt="">
+                            </div>
+                        </div>
+                        <div class="shade-text">
+                            <font class="font-size font-red">￥</font><font class="font-red">158.78</font><font class="font-red font-size">/箱</font>
+                            <p class="color font-size">选择  产品型号 规格</p>
+                        </div>
+                        <img src="img/product/close.png" width="20" class="shade-close" alt="">
+                    </div>
+                    <div class="padding margin">
+                        <p class="color font-size">型号</p>
+                        <div class="model">
+                            <input type="button" class="cause-btn" value="POP-E 黄" />
+                            <input type="button" class="cause-btn" value="POP-E 红" />
+                            <input type="button" class="cause-btn active" value="POP-E 蓝" />
+                            <input type="button" class="cause-btn" value="POP-E 黑" />
+                            <input type="button" class="cause-btn" value="POP-E 白" />
+                        </div>
+                        <p class="color font-size">规格</p>
+                        <div class="model">
+                            <input type="button" class="cause-btn active" value="12罐/箱" />
+                        </div>
+                        <p class="color font-size">数量</p>
+                        <div class="list-margin">
+                            <div class="number model-number">
+                                <div class="subtract model-add" id="shadeLose"></div>
+                                <div class="change-number model-subtract" id="shadeNumber">2</div>
+                                <div class="add model-add" id="shadeAdd"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <a class="buy-btn orange-bg add-shopping" href="car.html">加入购物车</a>
+                        <a class="buy-btn add-shopping" href="affirm.html">立即购买</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer footer-height">
+        <div class="footerBox white-bg">
+            <div class="footer-left">
+                <a class="footerTab">
+                    <em><img src="img/product/icon04.png" alt=""></em>
+                    客服
+                </a>
+                <a class="footerTab" href="index.html">
+                    <em><img src="img/icon01.png" alt=""></em>
+                    店铺
+                </a>
+                <a class="footerTab" href="indexCar.html">
+                    <em><img src="img/icon03.png" alt=""></em>
+                    购物车
+                </a>
+            </div>
+            <div class="footer-right">
+                <a class="buy-btn orange-bg width-btn" id="addCar">加入购物车</a>
+                <a class="buy-btn width-btn" href="affirm.html">立即购买</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+
+</html>
