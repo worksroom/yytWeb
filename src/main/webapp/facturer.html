@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <title></title>
+    <link rel="stylesheet" href="css/ionic.app.css"/>
+    <link rel="stylesheet" href="css/ionic.app.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+    <header class="bar bar-header bar-dark">
+        <h1 class="title">资讯</h1>
+    </header>
+    <section class="scroll-content has-header">
+        <div class="hide facturer-cont show">
+            <div class="search">
+                <input type="text" class="search-btn" placeholder="搜索厂家">
+            </div>
+            <ul class="list facturer" id="facturer_supply">
+                <li class="item item-thumbnail-left" onClick="starInfor()">
+                    <img src="img/zx/img09.png" alt="">
+                    <h2>北京艺彩轩印刷有限公司</h2>
+                    <p>专业从事彩色印刷，书刊印刷，手提袋印刷，信封印刷,宣传册印刷，房地产广告印刷，房地产广告...</p>
+                    <p class="pad-top">16:42</p>
+                </li>
+                <li class="item item-thumbnail-left">
+                    <img src="img/zx/img10.png" alt="">
+                    <h2>廊坊市华玺印刷有限公司</h2>
+                    <p>专业从事彩色印刷，书刊印刷，手提袋印刷。</p>
+                    <p class="pad-top">2016-09-23</p>
+                </li>
+                <li class="item item-thumbnail-left">
+                    <img src="img/zx/img11.png" alt="">
+                    <h2>北京盛通印刷股份有限公司</h2>
+                    <p>专业从事彩色印刷，书刊印刷，手提袋印刷，信封印刷,宣传册印刷，房地产广告印刷。</p>
+                    <p class="pad-top">2016-09-23</p>
+                </li>
+                <li class="item item-thumbnail-left">
+                    <img src="img/zx/img12.png" alt="">
+                    <h2>兆迪印刷机械有限公司</h2>
+                    <p>我司是一家专业生产系列移印机（含单色移印机、双色移印机、四色移印机、五色移印机、六色移...</p>
+                    <p class="pad-top">2016-09-23</p>
+                </li>
+                <li class="item item-thumbnail-left">
+                    <img src="img/zx/img10.png" alt="">
+                    <h2>北京杰富达印刷机械有限公司</h2>
+                    <p>专业从事彩色印刷，书刊印刷。</p>
+                    <p class="pad-top">2016-09-23</p>
+                </li>
+            </ul>
+        </div>
+        <div class="hide">
+            <ul class="list facturer" id="facturer_demand">
+                <li class="item" onClick="starInfor()">
+                    <h2>需要一台东洋的大型印刷机</h2>
+                    <p>16:34</p>
+                </li>
+                <li class="item">
+                    <h2>需要订购大批量胶纸，有意者请联系,Scotch,海德...</h2>
+                    <p>16:14</p>
+                </li>
+                <li class="item">
+                    <h2>需要一台东洋的大型印刷机</h2>
+                    <p>16:14</p>
+                </li>
+                <li class="item">
+                    <h2>需要订购大批量胶纸，有意者请联系,Scotch等品牌</h2>
+                    <p>2016-09-24</p>
+                </li>
+                <li class="item">
+                    <h2>需要订购大批量胶纸，有意者请联系,Scotch等品牌</h2>
+                    <p>2016-09-24</p>
+                </li>
+                <li class="item">
+                    <h2>需要一台东洋的大型印刷机</h2>
+                    <p>2016-09-24</p>
+                </li>
+                <li class="item">
+                    <h2>需要一台东洋的大型印刷机</h2>
+                    <p>2016-09-24</p>
+                </li>
+                <li class="item">
+                    <h2>需要一台大型印刷机</h2>
+                    <p>2016-09-24</p>
+                </li>
+                <li class="item">
+                    <h2>需要一台东洋的大型印刷机</h2>
+                    <p>2016-09-24</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <footer class="bar bar-footer pad-none" id="footer">
+        <div class="button-bar facturer-img" id="facturer">
+            <a class="button button-clear facturer-active">
+                <img src="img/zx/icon02.png" width="24" alt="" id="carImg"/> 厂商供应
+            </a>
+            <a class="button button-clear">
+                <img src="img/zx/icon03.png" width="24" alt="" id="needImg"/> 用户需求
+            </a>
+        </div>
+    </footer>
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/JBasic.js"></script>
+    <script src="js/commonality.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/page/facturer.js"></script>
+    <script>
+        $(document).ready(function(){
+            var facturer = new Facturer();
+            facturer.loadSupplyList();
+            facturer.loadDemandList();
+        });
+
+
+        function clickSupply(id) {
+            window.location="company.html";
+        }
+
+        function clickDemand(id) {
+            window.location="infor-particular.html";
+        }
+    </script>
+</body>
+</html>

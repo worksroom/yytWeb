@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <title></title>
+    <link rel="stylesheet" href="css/css.css"/>
+</head>
+<body>
+    <header class="header">
+        个人中心
+    </header>
+    <section class="section">
+        <div class="section-top">
+            <img src="img/personal/img02.png" alt="" width="60">
+            <p>JF00321</p>
+            <p class="perfect-font">
+                <a href="personal.html">您的账号信息不完整，请完善信息 <img src="img/personal/back.png" width="5.5" ></a></p>
+        </div>
+        <ul class="persona-tab">
+            <li><img src="img/personal/icon10.png" class="img-middle" width="22"> 账号管理</li>
+            <li><img src="img/personal/icon08.png" class="img-middle" width="19"> 消息</li>
+        </ul>
+        <div class="personal-order">
+            <div class="personal-title padding">
+                我的订单
+                <span> <a href="javascript:;">查看全部订单 <img src="img/icon05.png" class="img-middle" width="6"></a></span>
+            </div>
+            <ul class="perfect-order">
+                <li>
+                    <a href="javascript:;">
+                        <div class="positive" id="wait_pay">
+                            <img src="img/personal/icon02.png" alt="">
+                        </div>
+                        <p>待付款</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <div class="positive" id="wait_delivery">
+                            <p><img src="img/personal/icon01.png" alt=""></p>
+                        </div>
+                        <p>待发货</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <p><img src="img/personal/icon03.png" alt=""></p>
+                        <p>待评价</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <p><img src="img/personal/icon07.png" alt=""></p>
+                        <p>售后</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="perfect-order perfect-width margin">
+                <li>
+                    <a href="javascript:;">
+                        <p><img src="img/personal/icon_01.png" alt=""></p>
+                        <p id="goods_num">收藏的宝贝</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <p><img src="img/personal/icon_02.png" alt=""></p>
+                        <p id="shop_num">收藏的店铺</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <p><img src="img/personal/icon_04.png" alt=""></p>
+                        <p>我的足迹(355)</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="personal-order margin">
+            <div class="personal-title padding padding-top">其他</div>
+            <ul class="perfect-order perfect-width">
+                <li>
+                    <a href="javascript:;">
+                        <p><img src="img/personal/icon_03.png" alt=""></p>
+                        <p>我的合约</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <p><img src="img/personal/icon_05.png" alt=""></p>
+                        <p>有效合约</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <p><img src="img/personal/icon04.png" alt=""></p>
+                        <p>过期合约</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <footer class="footer footer-height white-bg">
+        <a class="homeTab" href="home.html">
+            <em><img src="img/shopping/icon06.png" alt=""></em>
+            首页
+        </a>
+        <a class="homeTab" href="classify.html">
+            <em><img src="img/shopping/icon01.png" alt="" width="24"></em>
+            分类
+        </a>
+        <a class="homeTab" href="car.html">
+            <em><img src="img/icon03.png" alt=""></em>
+            购物车
+        </a>
+        <a class="homeTab active" href="perfect.html">
+            <em><img src="img/shopping/icon04.png" alt=""></em>
+            我的
+        </a>
+    </footer>
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/JBasic.js"></script>
+    <script src="js/commonality.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/page/perfect.js"></script>
+    <script>
+        $(document).ready(function(){
+            var perfect = new Perfect();
+            perfect.init();
+        });
+    </script>
+
+</body>
+</html>
