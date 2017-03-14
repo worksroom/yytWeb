@@ -21,6 +21,7 @@ public class ProductLoginAction {
 
     IProductRpcService productRpcService = YytRpcClientFactory.getProductRpcService();
 
+
     @POST
     @Path(value = "/comment")
     @Produces("text/json;charset=UTF-8")
@@ -48,4 +49,7 @@ public class ProductLoginAction {
 
         return json.toJSONString();
     }
+
+
+
 }
