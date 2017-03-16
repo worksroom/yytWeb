@@ -196,12 +196,12 @@ $(function(){
     //    }
     //})
     /*----------------删除地址----------------*/
-    var deleteIncident=$(".delete");
-    for(var i=0;i<deleteIncident.length;i++){
-        deleteIncident.click(function () {
-            $(this).parents("div").hide();
-        })
-    }
+    //var deleteIncident=$(".delete");
+    //for(var i=0;i<deleteIncident.length;i++){
+    //    deleteIncident.click(function () {
+    //        $(this).parents("div").hide();
+    //    })
+    //}
     /*-------当所搜框有内容时无背景图片------*/
     $(".search-btn").bind("blur",function () {
         if($(this).val().length==""){
@@ -255,9 +255,9 @@ $(function(){
 function back() {
     window.history.back();
 }
-function next() {//绑定手机
-    window.location="binding.html";
-}
+//function next() {//绑定手机
+//    window.location="binding.html";
+//}
 function openLocation() {//添加地址
     window.location="addlocation.html";
 }

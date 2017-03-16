@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <title></title>
+    <link rel="stylesheet" href="css/css.css"/>
+</head>
+<body>
+    <header class="header">
+        <img src="img/back.png" width="8" class="header-img" onclick="back()"> 绑定手机号
+    </header>
+    <section>
+        <ul class="list">
+            <li><em>手机号</em><input type="text" value="18233001234" class="inputs" id="phone" name="phone"></li>
+            <li class="relative bor-none">
+                <em>获取验证码</em>
+                <input type="text" placeholder="输入验证码" class="inputs width" id="smsCode" name="smsCode">
+                <input type="button" class="click-btn gain-btn" onClick="sendTime(this)" value="获取验证码">
+            </li>
+        </ul>
+        <div class="div-btn">
+            <input type="button" data-role="none" class="btn" value="确认" id="submit">
+        </div>
+    </section>
+
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/seedTime.js"></script>
+    <script src="js/JBasic.js"></script>
+    <script src="js/commonality.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/page/binding.js"></script>
+    <script src="js/location.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#submit').click(function () {
+                var binding = new Binding();
+                binding.submit();
+            });
+
+        });
+    </script>
+</body>
+</html>
