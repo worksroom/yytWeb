@@ -65,11 +65,11 @@ $(function(){
         }
     })
     /*--------------------型号选择--------------*/
-    $(".model input[type='button']").each(function () {
-        $(this).click(function () {
-            $(this).addClass("active").siblings("input").removeClass("active");
-        })
-    })
+    //$(".model input[type='button']").each(function () {
+    //    $(this).click(function () {
+    //        $(this).addClass("active").siblings("input").removeClass("active");
+    //    })
+    //})
     /*------------------添加购买数量-------------*/
     $("#add").click(function () {
         var addValue=$("#modelNumber");
