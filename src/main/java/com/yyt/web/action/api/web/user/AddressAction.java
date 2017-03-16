@@ -8,10 +8,8 @@ import com.yyt.print.rpc.client.user.IUserRpcService;
 import com.yyt.print.user.pojo.DeliveryAddr;
 import org.springframework.stereotype.Controller;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +19,7 @@ import java.util.Map;
 @Path("/api/web/address")
 @Controller("api/web/address")
 public class AddressAction {
-    Log loger = LogFactory.getLog(AddressAction.class);
+    private static final Log loger = LogFactory.getLog(AddressAction.class);
     IUserRpcService userRpcService = YytRpcClientFactory.getUserRpcService();
 
     /**
@@ -47,4 +45,98 @@ public class AddressAction {
         return result.toJSONString();
     }
 
+    /**
+     * 查询收货地址
+     * @param userId
+     * @param addrId
+     * @return
+     */
+    @GET
+    @Path(value = "/get")
+    @Produces("text/json;charset=UTF-8")
+    public String get(@HeaderParam("userId") int userId, @QueryParam("addrId") int addrId){
+        JSONObject result = new JSONObject();
+
+        DeliveryAddr addr = userRpcService.getUserAddr(addrId);
+
+        result.put("result",addr);
+        result.put("status","0000");
+        return result.toJSONString();
+    }
+
+    /**
+     * 添加收货地址
+     * @param userId
+     * @param name
+     * @param phone
+     * @param region
+     * @param addr
+     * @param code
+     * @return
+     */
+    @POST
+    @Path(value = "/add")
+    @Produces("text/json;charset=UTF-8")
+    public String add(@HeaderParam("userId") int userId, @FormParam("name") String name
+            , @FormParam("id") int id
+            , @FormParam("phone") String phone
+            , @FormParam("region") String region
+            , @FormParam("street") String street
+            , @FormParam("addr") String addr
+            , @FormParam("code") String code
+            , @FormParam("default_flag") int default_flag) {
+        JSONObject result = new JSONObject();
+
+        userId=1;
+        DeliveryAddr deliveryAddr = new DeliveryAddr();
+        deliveryAddr.setCreateTime(new Date());
+        deliveryAddr.setUserId(userId);
+
+        if(id>0){
+            deliveryAddr = userRpcService.getUserAddr(id);
+            deliveryAddr.setUpdateTime(new Date());
+        }
+
+        deliveryAddr.setName(name);
+        deliveryAddr.setPhone(phone);
+        deliveryAddr.setRegion(region);
+        deliveryAddr.setAddr(addr);
+        deliveryAddr.setCode(code);
+
+        int dbFlag = 0;
+        if(id>0){
+            dbFlag = userRpcService.updateUserAddr(deliveryAddr);
+        } else {
+            dbFlag = userRpcService.addUserAddr(deliveryAddr);
+        }
+        if(dbFlag>0){
+            result.put("status","0000");
+        } else {
+            result.put("status","0001");
+        }
+
+        return result.toJSONString();
+    }
+
+    /**
+     * 删除收货地址
+     * @param userId
+     * @param id
+     * @return
+     */
+    @POST
+    @Path(value = "/delete")
+    @Produces("text/json;charset=UTF-8")
+    public String delete(@HeaderParam("userId") int userId, @FormParam("addrId") int id){
+        JSONObject result = new JSONObject();
+
+        int dbFlag = userRpcService.delUserAddr(id);
+        if(dbFlag>0){
+            result.put("status","0000");
+        } else {
+            result.put("status","0001");
+        }
+
+        return result.toJSONString();
+    }
 }

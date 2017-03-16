@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <title></title>
+    <link rel="stylesheet" href="css/css.css"/>
+</head>
+<body>
+    <header class="header">
+        <img src="img/back.png" width="8" class="header-img"> 实名认证
+    </header>
+    <section>
+        <div class="ID-car">请上传<font color="#23a1f1">*东</font>的身份证正反面照片</div>
+        <div class="white">
+            <div class="front" id="Fphoto">
+                <img src="img/personal/img03.png" alt="" id="Fphoto_img">
+                <p class="font-color">上传身份证正面</p>
+            </div>
+            <input type="file" id="Fphoto_upload" accept="image/*" capture="camera" style="height:0px;width:0px;border:0px;display:none;" />
+            <input type="hidden" id="Fphoto_url" name="Fphoto_url" value=""/>
+
+            <div class="front reverse" id="Bphoto">
+                <img src="img/personal/img04.png" alt="" id="Bphoto_img">
+                <p class="font-color">上传身份证背面</p>
+            </div>
+            <input type="file" id="Bphoto_upload" accept="image/*" capture="camera" style="height:0px;width:0px;border:0px;display:none;" />
+            <input type="hidden" id="Bphoto_url" name="Bphoto_url" value=""/>
+        </div>
+        <div class="padding">
+            <p><img src="img/personal/icon05.png" width="20" alt="" class="img-middle"> 身份证拍摄要求</p>
+            <p class="small-font">
+                请上传清晰彩色，完整的原件扫描件或照片；身份证各项信息及头像清晰可见，容易识别；证件必须真实拍摄，不能使用复印件；大小不超过2M
+            </p>
+        </div>
+        <div class="div-btn">
+            <input type="button" data-role="none" class="btn" id="submit" name="submit" value="确认上传">
+        </div>
+    </section>
+
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/JBasic.js"></script>
+    <script src="js/commonality.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/crop/h5_upload.js"></script>
+    <script src="js/page/idcardbuyer.js"></script>
+    <script>
+        $(document).ready(function () {
+            var idCardBuyer = new IdCardBuyer();
+            idCardBuyer.init();
+
+            $('#Fphoto').click(function () {
+                $('#Fphoto_upload').click();
+            });
+            var upload1 = new H5Upload($("#Fphoto_upload"), $("#Fphoto_img"), $("#Fphoto_url"));
+            upload1.init();
+
+
+            $('#Bphoto').click(function () {
+                $('#Bphoto_upload').click();
+            });
+            var upload2 = new H5Upload($("#Bphoto_upload"), $("#Bphoto_img"), $("#Bphoto_url"));
+            upload2.init();
+
+        });
+
+
+    </script>
+
+</body>
+</html>
