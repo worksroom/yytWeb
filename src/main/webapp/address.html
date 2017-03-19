@@ -101,13 +101,16 @@
     <script src="js/commonality.js"></script>
     <script src="js/config.js"></script>
     <script src="js/page/address.js"></script>
+    <script src="js/page/login.js"></script>
+
     <script>
         var address;
         $(document).ready(function(){
             address = new Address();
             address.init();
 
-
+            var login = new Login();
+            login.isLogin();
         });
 
         function delAddr(addrId, obj){

@@ -45,17 +45,14 @@ class Personal {
                     else {
                         _this.basic.toast("请稍后再试..");
                     }
-
                 } else {
                     _this.basic.toast("请稍后再试..");
                 }
             }
             ,
-            {}
+            _this.basic.getUaHeadParam()
             ,
-            {
-                "userId": "5"
-            }
+            {}
         );
     }
 }

@@ -41,8 +41,8 @@ class Perfect {
                     _this.basic.toast("请稍后再试..");
                 }
             },
-            {},
-            {"userId": "1"}
+            _this.basic.getUaHeadParam(),
+            {}
         );
     }
 }

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <title></title>
+    <style type="text/css">
+        #bg-white {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+        }
+
+        #header {
+            /*background-color: yellow;*/
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            margin: 0px 10px;
+            border-bottom: 1px solid lightgrey;
+        }
+
+        #content {
+            /*background-color: orange;*/
+        }
+
+        #content-input1 {
+            /*background-color: cyan;*/
+            margin: 10px;
+            height: 40px;
+            position: relative;
+        }
+
+        #content-input1 img {
+            margin-left: 3px;
+            margin-top: 7.5px;
+            display: inline-block;
+            /*width: 30px;*/
+            /*height: 30px;*/
+            position: absolute;
+            float: left;
+        }
+
+        #content-input1 input {
+            outline: none;
+            width: 100%;
+            height: 100%;
+            margin-top: 0;
+            padding-left: 35px;
+            box-sizing: border-box;
+            border-radius: 3px;
+            border: 1px solid lightgrey;
+        }
+
+        #content-input1 input:focus {
+            outline: orange;
+        }
+
+        #content-input2 {
+            /*background-color: yellow;*/
+            margin: 10px;
+            height: 40px;
+            position: relative;
+        }
+
+        #content-input2 img {
+            margin-left: 3px;
+            margin-top: 7.5px;
+            position: absolute;
+            float: left;
+        }
+
+        #content-input2 input {
+            outline: none;
+            width: 100%;
+            height: 100%;
+            padding-left: 35px;
+            box-sizing: border-box;
+            border: 1px solid lightgrey;
+            border-radius: 3px;
+        }
+
+        #content-loginBtn {
+            margin: 10px;
+        }
+
+        button {
+            background-color: red;
+            width: 100%;
+            height: 40px;
+            color: white;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #content-register {
+            /*background-color: cyan;*/
+            margin: 10px;
+            font-size: 5px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        #content-register a {
+            font-size: 15px;
+            color: red;
+            text-decoration: none;
+
+        }
+
+    </style>
+</head>
+<body>
+<div id="bg-white">
+
+    <div id="header">
+        <h1>欢迎登录</h1>
+    </div>
+
+    <div id="content">
+
+        <div id="content-input1">
+            <img src="img/login/icon_people.png">
+            <input type="text" placeholder="请输入用户名/手机号" value="admin" id="username" name="username">
+        </div>
+
+        <div id="content-input2">
+            <img src="img/login/icon_password.png">
+            <input type="password" placeholder="请输入密码" value="admin" id="password" name="password">
+        </div>
+
+        <div id="content-loginBtn">
+            <button id="login_btn" name="login_btn">登录</button>
+        </div>
+
+        <div id="content-register">
+            还没账号?
+            <a href="#" target="">立即注册</a>
+            <!--<button>立即注册</button>-->
+        </div>
+    </div>
+</div>
+<script src="js/jquery-1.9.1.js"></script>
+<script src="js/JBasic.js"></script>
+<script src="js/commonality.js"></script>
+<script src="js/config.js"></script>
+<script src="js/page/login.js"></script>
+</body>
+</html>

@@ -11,8 +11,7 @@ class Binding {
         var _this = this;
         var param ={
             "phone": $("#phone").val(),
-            "smsCode": $("#smsCode").val(),
-            "userid": _this.basic.getUaData("userid")
+            "smsCode": $("#smsCode").val()
         }
 
 
@@ -32,7 +31,7 @@ class Binding {
                     _this.basic.toast("请稍后再试..");
                 }
             },
-            {},
+            _this.basic.getUaHeadParam(),
             param,
             'POST'
         );
