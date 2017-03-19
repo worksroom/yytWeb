@@ -13,18 +13,6 @@ class Login{
         });
     }
 
-    isLogin(){
-        var _this = this;
-        var sessionid = _this.basic.getCookie("sessionid");
-        var userid = _this.basic.getCookie("userid");
-        var ak = _this.basic.getCookie("ak");
-        //alert(userid + ',' + ak + ',' + sessionid);
-
-        if(userid==null || userid=="undefined" || sessionid==null || sessionid=="undefined"){
-            window.location.href="login.html";
-        }
-    }
-
     login() {
         var _this = this;
         var param = {
