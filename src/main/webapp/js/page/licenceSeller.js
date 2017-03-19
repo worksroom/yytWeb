@@ -17,10 +17,8 @@ class LicenceSeller {
     submit(){
         var _this = this;
         var tempParam = _this.basic.getQueryString("tempParam");
-        alert(tempParam);
         var param = JSON.parse(tempParam);
         param.licencePhone = $("#Licence_url").val();
-        param.userid = _this.basic.getUaData("userid");
 
         _this.basic.doRequest(
             this.seller_auth_url,
@@ -39,7 +37,7 @@ class LicenceSeller {
                     _this.basic.toast("请稍后再试..");
                 }
             },
-            {},
+            _this.basic.getUaHeadParam(),
             param,
             'POST'
         );

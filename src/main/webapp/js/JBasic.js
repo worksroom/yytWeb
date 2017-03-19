@@ -246,9 +246,26 @@
 			},
 			getUaHeadParam:function(){
 				var headParam = new Object();
-				headParam.userid = this.getUaData("userid");
-				headParam.ak = this.getUaData("ak");
-				headParam.sessionid = this.getUaData("sessionid");
+				//headParam.userid = this.getUaData("userid");
+				//headParam.ak = this.getUaData("ak");
+				//headParam.sessionid = this.getUaData("sessionid");
+				if(this.getCookie("userid")==null || this.getCookie("userid")=="undefined"){
+					headParam.userid = -1;
+				} else{
+					headParam.userid = this.getCookie("userid");
+				}
+
+				if(this.getCookie("ak")==null || this.getCookie("ak")=="undefined"){
+					headParam.ak = -1;
+				} else {
+					headParam.ak = this.getCookie("ak");
+				}
+
+				if(this.getCookie("sessionid")==null || this.getCookie("sessionid")=="undefined"){
+					headParam.sessionid = -1;
+				} else {
+					headParam.sessionid = this.getCookie("sessionid");
+				}
 				return headParam;
 			},
 			isInApp:function(){

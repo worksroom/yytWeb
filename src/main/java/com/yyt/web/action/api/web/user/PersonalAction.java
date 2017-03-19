@@ -47,8 +47,6 @@ public class PersonalAction {
     public String perfect(@HeaderParam("userId") int userId){
         JSONObject result = new JSONObject();
 
-        userId = 5;
-
         Map<String,Integer> collectCountMap = orderRPCService.getCollectCount(userId);
         Map<Integer,Integer> orderCountMap = orderRPCService.getOrderCount(userId);
 
@@ -74,7 +72,6 @@ public class PersonalAction {
     public String personal(@HeaderParam("userId") int userId){
         JSONObject result = new JSONObject();
 
-        userId = 5;
         User user = userRpcService.getUser(userId);
         UserThirdBind thirdBind = userRpcService.getUserThirdBind(userId, User.REGIST_PHONE);
         UserBuyer userBuyer = userRpcService.getUserBuyer(userId);
@@ -82,7 +79,7 @@ public class PersonalAction {
 
         JSONObject userJson = new JSONObject();
         userJson.put("nickname", user.getNickName());
-        userJson.put("headpic", "");
+        userJson.put("headpic", user.getHeadImg());
         if(thirdBind!=null){
             userJson.put("phone", thirdBind.getThirdId());
         }
@@ -109,7 +106,6 @@ public class PersonalAction {
             , @FormParam("cardBPhoto") String cardBPhoto
             , @FormParam("userCardPhoto") String userCardPhoto){
 
-        userId = 5;
         UserBuyer userBuyer = new UserBuyer();
         userBuyer.setName(name);
         userBuyer.setUserId(userId);
@@ -136,9 +132,9 @@ public class PersonalAction {
             , @FormParam("cardFPhoto") String cardFPhoto
             , @FormParam("cardBPhoto") String cardBPhoto
             , @FormParam("userCardPhoto") String userCardPhoto
-            , @FormParam("licencePhone") String licencePhone){
+            , @FormParam("licencePhone") String licencePhone
+            , @FormParam("shopName") String shopName) {
 
-        userId = 5;
         UserSeller userSeller = new UserSeller();
         userSeller.setUserId(userId);
         userSeller.setName(name);
@@ -146,6 +142,7 @@ public class PersonalAction {
         userSeller.setCardFPhoto(cardFPhoto);
         userSeller.setCardBPhoto(cardBPhoto);
         userSeller.setLicencePhone(licencePhone);
+        userSeller.setShopName(shopName);
 
         JSONObject result = new JSONObject();
         int dbFlag = userRpcService.saveUserSeller(userSeller);
@@ -162,7 +159,9 @@ public class PersonalAction {
     @POST
     @Path(value = "/upload_img")
     @Produces("text/json;charset=UTF-8")
-    public String upload_img(@Context HttpServletRequest request, @HeaderParam("userId") int userId, @FormParam("image_data") String imageData) {
+    public String upload_img(@Context HttpServletRequest request,
+                             @HeaderParam("userId") int userId,
+                             @FormParam("image_data") String imageData) {
 
         JSONObject json = new JSONObject();
         String filePath = request.getSession().getServletContext().getRealPath("") + File.separator + "images" + File.separator;
@@ -213,7 +212,6 @@ public class PersonalAction {
     public String bindPhone(@HeaderParam("userId") int userId, @FormParam("phone") String phone
             , @FormParam("smsCode") String smsCode){
 
-        userId = 5;
         UserThirdBind bind = new UserThirdBind();
         bind.setUserId(userId);
         bind.setType(User.REGIST_PHONE);

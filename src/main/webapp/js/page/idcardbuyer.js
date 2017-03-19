@@ -19,8 +19,7 @@ class IdCardBuyer {
         var param ={
             "name": _this.basic.getQueryString("name"),
             "cardFPhoto": $("#Fphoto_url").val(),
-            "cardBPhoto": $("#Bphoto_url").val(),
-            "userid": _this.basic.getUaData("userid")
+            "cardBPhoto": $("#Bphoto_url").val()
         }
 
 
@@ -41,7 +40,7 @@ class IdCardBuyer {
                     _this.basic.toast("请稍后再试..");
                 }
             },
-            {},
+            _this.basic.getUaHeadParam(),
             param,
             'POST'
         );

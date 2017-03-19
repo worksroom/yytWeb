@@ -33,8 +33,6 @@ public class AddressAction {
     public String addressList(@HeaderParam("userId") int userId){
         JSONObject result = new JSONObject();
 
-        userId = 1;
-
         List<DeliveryAddr> list = userRpcService.findUserAddr(userId);
 
         if(list!=null && !list.isEmpty()){
@@ -87,7 +85,6 @@ public class AddressAction {
             , @FormParam("default_flag") int default_flag) {
         JSONObject result = new JSONObject();
 
-        userId=1;
         DeliveryAddr deliveryAddr = new DeliveryAddr();
         deliveryAddr.setCreateTime(new Date());
         deliveryAddr.setUserId(userId);
@@ -100,8 +97,10 @@ public class AddressAction {
         deliveryAddr.setName(name);
         deliveryAddr.setPhone(phone);
         deliveryAddr.setRegion(region);
+        deliveryAddr.setStreet(street);
         deliveryAddr.setAddr(addr);
         deliveryAddr.setCode(code);
+        deliveryAddr.setDefaultAddr(default_flag);
 
         int dbFlag = 0;
         if(id>0){
