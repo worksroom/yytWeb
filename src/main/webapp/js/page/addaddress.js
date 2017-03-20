@@ -35,7 +35,11 @@ class AddressCURD {
                         $("#region").html(result['region']);
                         $("#street").val(result['street']);
                         $("#addr").val(result['addr']);
-                        $("#default_flag").val(result['default_flag']);
+                        if(result['defaultAddr']==1){
+                            $("#default_flag").attr("class", "checks2");
+                            $('#default_flag').attr('checked','checked');
+                        }
+
                     }
                     else {
                         _this.basic.toast("请稍后再试..");
@@ -56,6 +60,10 @@ class AddressCURD {
 
     //添加或修改收货地址
     add(){
+        var default_flag=0;
+        if($('#default_flag').attr('checked')){
+            default_flag = 1;
+        }
         var param ={
             "id": $("#id").val(),
             "name": $("#name").val(),
@@ -63,9 +71,8 @@ class AddressCURD {
             "region": $("#region").html(),
             "street": $("#street").val(),
             "addr": $("#addr").val(),
-            "default_flag": $("#default_flag").val()
+            "default_flag": default_flag
         }
-
         var _this = this;
         _this.basic.doRequest(
             this.address_add_url,
@@ -74,6 +81,7 @@ class AddressCURD {
                     var status = data["status"];
                     if ("0000" == status) {
                         _this.basic.toast("保存成功");
+                        window.history.back();
                     }
                     else {
                         _this.basic.toast("请稍后再试..");
@@ -83,7 +91,7 @@ class AddressCURD {
                     _this.basic.toast("请稍后再试..");
                 }
             },
-            {},
+            _this.basic.getUaHeadParam(),
             param,
             'POST'
         );

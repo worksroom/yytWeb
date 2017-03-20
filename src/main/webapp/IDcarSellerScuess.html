@@ -17,16 +17,26 @@
             <p>认证提交成功，等待审核！</p>
         </div>
         <ul class="list">
-            <li>姓名 <span class="span">王东</span></li>
-            <li>店铺名称 <span class="span">Leo的小铺</span></li>
+            <li>姓名 <span class="span" id="sellerName"></span></li>
+            <li>店铺名称 <span class="span" id="shopName"></span></li>
         </ul>
         <div class="div-btn">
             <input type="button" data-role="none" class="btn" onclick="next()" value="返回个人中心">
         </div>
     </section>
     <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/JBasic.js"></script>
     <script src="js/commonality.js"></script>
+    <script src="js/config.js"></script>
     <script>
+        $(document).ready(function(){
+            var basic = new $.JBasic();
+            var sellerName = decodeURIComponent(basic.getQueryString("sellerName"));
+            $("#sellerName").html(sellerName);
+            var shopName = decodeURIComponent(basic.getQueryString("shopName"));
+            $("#shopName").html(shopName);
+        });
+
         function next(){
             window.location="personal.html";
         }

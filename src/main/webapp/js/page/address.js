@@ -32,7 +32,12 @@ class Address {
                             var secDiv = '<div class="address-select">';
                             secDiv += '<div class="address-check">';
                             secDiv += '<div class="check-left">';
-                            secDiv += '<input type="checkbox" class="checks2" name="carCheckBox">';
+                            if(value['defaultAddr']==1){
+                                secDiv += '<input type="checkbox" class="checks2">';
+                            } else{
+                                secDiv += '<input type="checkbox" class="checks">';
+                            }
+
                             secDiv += '</div>';
                             secDiv += '<div class="check-right address-widths">';
                             secDiv += '<em class="select select-color">设置为默认地址</em>';
@@ -90,4 +95,10 @@ class Address {
             'POST'
         );
     }
+
+}
+
+
+function openLocation() {//添加地址
+    window.location="addlocation.html";
 }

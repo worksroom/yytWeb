@@ -27,7 +27,7 @@ class Personal {
 
                         if(result['buyerName']!=undefined && result['buyerName'].length>0){
                             $("#buyerName").text(result['buyerName']);
-                            $("#buyerName").attr("href","IDcarBuyerScuess.html");
+                            $("#buyerName").attr("href","IDcarBuyerScuess.html?buyerName="+encodeURIComponent(encodeURIComponent(result["buyerName"])));
                         } else {
                             $("#buyerName").text('前往实名认证');
                             $("#buyerName").attr("href","realBuyer.html");
@@ -35,7 +35,7 @@ class Personal {
 
                         if(result['sellerName']!=undefined && result['sellerName'].length>0){
                             $("#sellerName").text(result['sellerName']);
-                            $("#sellerName").attr("href","IDcarSellerScuess.html");
+                            $("#sellerName").attr("href","IDcarSellerScuess.html?sellerName="+encodeURIComponent(encodeURIComponent(result['sellerName']))+"&shopName="+encodeURIComponent(encodeURIComponent(result['shopName'])));
                         } else {
                             $("#sellerName").text('前往实名认证');
                             $("#sellerName").attr("href","realSeller.html");

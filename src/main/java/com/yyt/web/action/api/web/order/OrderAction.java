@@ -3,7 +3,10 @@ package com.yyt.web.action.api.web.order;
 import com.alibaba.fastjson.JSONObject;
 import com.youguu.core.logging.Log;
 import com.youguu.core.logging.LogFactory;
+import com.youguu.core.util.PageHolder;
+import com.yyt.print.order.pojo.Orders;
 import com.yyt.print.order.pojo.ShoppingCartSet;
+import com.yyt.print.order.query.OrdersQuery;
 import com.yyt.print.rpc.client.YytRpcClientFactory;
 import com.yyt.print.rpc.client.order.IOrderRPCService;
 import org.springframework.stereotype.Controller;
@@ -65,5 +68,18 @@ public class OrderAction {
         return json.toJSONString();
     }
 
+
+    @GET
+    @Path(value = "/orderlist")
+    @Produces("text/json;charset=UTF-8")
+    public String orderlist(@HeaderParam("userId") int userId, @QueryParam("type") int type) {
+        OrdersQuery ordersQuery = new OrdersQuery();
+        PageHolder<Orders> pageHolder = service.findOrders(ordersQuery);
+        JSONObject json = new JSONObject();
+        json.put("status", "0000");
+        json.put("result", pageHolder);
+
+        return json.toJSONString();
+    }
 
 }

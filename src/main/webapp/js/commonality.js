@@ -34,12 +34,12 @@ $(function(){
         $(".tab li").eq(index).addClass("active").siblings().removeClass("active");
         $(".first").eq(index).show().siblings().hide();
     })
-    var orderTab=$(".order-tab li");
-    orderTab.click(function () {
-        var index=$(this).index();
-        $(".order-tab li").eq(index).addClass("order-active").siblings().removeClass("order-active");
-        $(".order-cont").eq(index).show().siblings().hide();
-    })
+    //var orderTab=$(".order-tab li");
+    //orderTab.click(function () {
+    //    var index=$(this).index();
+    //    $(".order-tab li").eq(index).addClass("order-active").siblings().removeClass("order-active");
+    //    $(".order-cont").eq(index).show().siblings().hide();
+    //})
     /*-------------所有宝贝分类---------*/
     //var tabMenu=$(".dotey li");
     //tabMenu.click(function () {
@@ -258,9 +258,9 @@ function back() {
 //function next() {//绑定手机
 //    window.location="binding.html";
 //}
-function openLocation() {//添加地址
-    window.location="addlocation.html";
-}
+//function openLocation() {//添加地址
+//    window.location="addlocation.html";
+//}
 function openEvaluate() {//评价
     window.location="evaluate.html";
 }

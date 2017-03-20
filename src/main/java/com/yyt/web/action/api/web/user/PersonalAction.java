@@ -90,6 +90,7 @@ public class PersonalAction {
 
         if(userSeller!=null){
             userJson.put("sellerName", userSeller.getName());
+            userJson.put("shopName", userSeller.getShopName());
         }
 
         result.put("result",userJson);
