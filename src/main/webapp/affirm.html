@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <title></title>
+    <link rel="stylesheet" href="css/css.css"/>
+</head>
+<body>
+    <header class="header">
+        <img src="img/back.png" width="8" class="header-img" onclick="back()"> 确认订单
+    </header>
+    <section>
+        <div class="padding blue">
+            <a href="address.html">
+                <div class="affirm-left">送至</div>
+                <div class="affirm-right">
+                    <p>收货人：王东<span>15100535245</span></p>
+                    <p class="margin-top">收货地址：北京市西城区展览路北展北街华远.企业中心</p>
+                </div>
+            </a>
+        </div>
+        <div class="order-first margin border-bot">
+            <div class="affirm-title">
+                <span class="affirm-span">订单1</span> 晶艺印务印刷有限公司
+            </div>
+            <div class="commodity padding white-bg">
+                <div class="commodity-img white-img">
+                    <img src="img/img01.png" alt="">
+                </div>
+                <div class="commodity-cont white-cont">
+                    <p class="commodity-h1">DIC宝凤飓风DIC宝凤飓风QD亮光不结皮油墨（合版印刷专用）</p>
+                    <p class="commodity-h2 white-h2">规格：POP-E 黄色  12罐/箱 <span>1件</span></p>
+                    <p class="commodity-h2 white-h2">编号：10670218482</p>
+                    <p class="commodity-h3 white-h3">￥158.78<font class="font-size">/箱</font></span></p>
+                    <p class="margin-top font-size white-font">
+                        <img src="img/order/icon03.png" class="img-middle" alt=""> 7天无理由退货
+                        <em class="margin-left"><img src="img/order/icon05.png" class="img-middle" alt=""> 价格说明</em>
+                    </p>
+                </div>
+            </div>
+            <div class="affirm-address margin-left">
+                <p>
+                    配送方式
+                    <a href="javascript:;">
+                        <span class="distribution">商家配送</span>
+                    </a>
+                </p>
+            </div>
+            <div class="affirm-address margin-left">
+                <p>
+                    编辑收货地址
+                    <a href="address.html">
+                        <span class="distribution">更改地址</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="order-first margin border-bot">
+            <div class="affirm-title">
+                <span class="affirm-span">订单1</span> 晶艺印务印刷有限公司
+            </div>
+            <div class="commodity padding white-bg">
+                <div class="commodity-img white-img">
+                    <img src="img/img01.png" alt="">
+                </div>
+                <div class="commodity-cont white-cont">
+                    <p class="commodity-h1">DIC宝凤飓风DIC宝凤飓风QD亮光不结皮油墨（合版印刷专用）</p>
+                    <p class="commodity-h2 white-h2">规格：POP-E 黄色  12罐/箱 <span>1件</span></p>
+                    <p class="commodity-h2 white-h2">编号：10670218482</p>
+                    <p class="commodity-h3 white-h3">￥158.78<font class="font-size">/箱</font></span></p>
+                    <p class="margin-top font-size white-font">
+                        <img src="img/order/icon03.png" class="img-middle" alt=""> 7天无理由退货
+                        <em class="margin-left"><img src="img/order/icon05.png" class="img-middle" alt=""> 价格说明</em>
+                    </p>
+                </div>
+            </div>
+            <div class="affirm-address margin-left">
+                <p>
+                    配送方式
+                    <a href="javascript:;">
+                        <span class="distribution">商家配送</span>
+                    </a>
+                </p>
+            </div>
+            <div class="affirm-address margin-left">
+                <p>
+                    编辑收货地址
+                    <a href="address.html">
+                        <span class="distribution">更改地址</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="white-bg margin">
+            <div class="order-title bill">
+                发票信息
+                <a href="javascript:;">
+                    <span class="bill-margin">个人  明细</span>
+                </a>
+            </div>
+            <div class="padding bill-money">
+                总价：<font class="red">￥317.56</font>
+                <div class="pay">
+                    <input type="button" value="微信支付" class="btn pay-btn">
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/JBasic.js"></script>
+    <script src="js/commonality.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/page/order.js"></script>
+    <script>
+        $(document).ready(function(){
+            var order = new Order();
+            order.init();
+        });
+    </script>
+</body>
+</html>

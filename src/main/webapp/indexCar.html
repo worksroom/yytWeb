@@ -16,50 +16,7 @@
 
 
 
-        <div class="affirm">
-            <div class="opacity"></div>
-            <div class="shade-box">
-                <div class="shade-cont">
-                    <div class="relative">
-                        <div class="shade-img-box">
-                            <div class="shade-img">
-                                <img src="img/product/img05.png" alt="">
-                            </div>
-                        </div>
-                        <div class="shade-text">
-                            <font class="font-size font-red">￥</font><font class="font-red">158.78</font><font class="font-red font-size">/箱</font>
-                            <p class="color font-size">选择  产品型号 规格</p>
-                        </div>
-                        <img src="img/product/close.png" width="20" class="shade-close" alt="">
-                    </div>
-                    <div class="padding margin">
-                        <p class="color font-size">型号</p>
-                        <div class="model">
-                            <input type="button" class="cause-btn" value="POP-E 黄" />
-                            <input type="button" class="cause-btn" value="POP-E 红" />
-                            <input type="button" class="cause-btn active" value="POP-E 蓝" />
-                            <input type="button" class="cause-btn" value="POP-E 黑" />
-                            <input type="button" class="cause-btn" value="POP-E 白" />
-                        </div>
-                        <p class="color font-size">规格</p>
-                        <div class="model">
-                            <input type="button" class="cause-btn active" value="12罐/箱" />
-                        </div>
-                        <p class="color font-size">数量</p>
-                        <div class="list-margin">
-                            <div class="number model-number">
-                                <div class="subtract model-add loseValue" id="shade-Lose"></div>
-                                <div class="change-number model-subtract" id="shade-Number">2</div>
-                                <div class="add model-add loseValue" id="shade-Add"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="footer">
-                        <a class="buy-btn add-shopping affirm-btn" href="affirm.html">确定</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </section>
     <footer class="footer white-bg padding-left border-bot">
         <div class="address-check">
@@ -67,9 +24,9 @@
                 <input type="checkbox" class="checks" id="allSelect">
             </div>
             <div class="check-right">
-                <em><font class="all-select">全选</font> <font class="gray">合计:</font><font class="font-red">￥25435</font></em>
+                <em><font class="all-select">全选</font> <font class="gray">合计:</font><font class="font-red" id="allPrice"></font></em>
                 <span>
-                    <input type="button" value="立即购买(0)" class="buy-btn radius-none" onclick="openPay()">
+                    <input type="button" value="立即购买" class="buy-btn radius-none" id="createOrder">
                 </span>
             </div>
         </div>
@@ -82,7 +39,7 @@
     <script>
         $(document).ready(function(){
             var car = new Car();
-            car.getData();
+            car.init();
         });
     </script>
 </body>
