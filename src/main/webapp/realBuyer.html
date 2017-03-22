@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <title></title>
+    <link rel="stylesheet" href="css/css.css"/>
+</head>
+<body>
+    <header class="header">
+        <img src="img/back.png" width="8" class="header-img" onclick="back()"> 实名认证
+    </header>
+    <section>
+        <ul class="list">
+            <li>姓名 <span><input type="text" value="" class="input" id="name" name="name"></span></li>
+        </ul>
+        <div class="div-btn">
+            <input type="button" data-role="none" class="btn" onclick="next()" value="下一步">
+        </div>
+    </section>
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/commonality.js"></script>
+    <script>
+        function next(){
+            window.location='IDcarBuyer.html?name='+$("#name").val();
+        }
+    </script>
+</body>
+</html>

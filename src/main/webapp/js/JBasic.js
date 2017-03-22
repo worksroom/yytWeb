@@ -246,9 +246,26 @@
 			},
 			getUaHeadParam:function(){
 				var headParam = new Object();
-				headParam.userid = this.getUaData("userid");
-				headParam.ak = this.getUaData("ak");
-				headParam.sessionid = this.getUaData("sessionid");
+				//headParam.userid = this.getUaData("userid");
+				//headParam.ak = this.getUaData("ak");
+				//headParam.sessionid = this.getUaData("sessionid");
+				if(this.getCookie("userid")==null || this.getCookie("userid")=="undefined"){
+					headParam.userid = -1;
+				} else{
+					headParam.userid = this.getCookie("userid");
+				}
+
+				if(this.getCookie("ak")==null || this.getCookie("ak")=="undefined"){
+					headParam.ak = -1;
+				} else {
+					headParam.ak = this.getCookie("ak");
+				}
+
+				if(this.getCookie("sessionid")==null || this.getCookie("sessionid")=="undefined"){
+					headParam.sessionid = -1;
+				} else {
+					headParam.sessionid = this.getCookie("sessionid");
+				}
 				return headParam;
 			},
 			isInApp:function(){
@@ -382,7 +399,8 @@
 			setCookie: function (name, value) {
 				var Days = 7; //此 cookie 将被保存 30 天
 				var exp = new Date();
-				exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+				//exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+				exp.setTime(exp.getTime() + 10 * 60 * 1000);
 				document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
 			},
 			getCookie: function (name) {

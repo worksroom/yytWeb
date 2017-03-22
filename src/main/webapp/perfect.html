@@ -25,11 +25,11 @@
         <div class="personal-order">
             <div class="personal-title padding">
                 我的订单
-                <span> <a href="javascript:;">查看全部订单 <img src="img/icon05.png" class="img-middle" width="6"></a></span>
+                <span> <a href="javascript:;" id="all_order">查看全部订单 <img src="img/icon05.png" class="img-middle" width="6"></a></span>
             </div>
             <ul class="perfect-order">
                 <li>
-                    <a href="javascript:;">
+                    <a href="javascript:;" id="wait_pay_btn">
                         <div class="positive" id="wait_pay">
                             <img src="img/personal/icon02.png" alt="">
                         </div>
@@ -37,15 +37,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:;">
-                        <div class="positive" id="wait_delivery">
-                            <p><img src="img/personal/icon01.png" alt=""></p>
-                        </div>
-                        <p>待发货</p>
-                    </a>
+                    <a href="javascript:;" id="wait_delivery_btn">
+                    <div class="positive" id="wait_delivery">
+                        <p><img src="img/personal/icon01.png" alt=""></p>
+                    </div>
+                    <p>待发货</p>
+                </a>
                 </li>
                 <li>
-                    <a href="javascript:;">
+                    <a href="javascript:;" id="wait_evaluate_btn">
                         <p><img src="img/personal/icon03.png" alt=""></p>
                         <p>待评价</p>
                     </a>
@@ -128,6 +128,7 @@
     <script>
         $(document).ready(function(){
             var perfect = new Perfect();
+            perfect.bindEvent();
             perfect.init();
         });
     </script>

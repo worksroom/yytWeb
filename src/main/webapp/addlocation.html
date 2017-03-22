@@ -12,54 +12,79 @@
     <header class="header">
         <img src="img/back.png" width="8" class="header-img" onclick="back()"> 添加新地址
     </header>
-    <section>
-        <div class="white-bg">
-            <div class="add-information">收货人 <span><input type="text" value="张艺兴" class="input-text" readonly></span></div>
-            <div class="add-information">联系电话 <span><input type="text" placeholder="输入手机号" class="input-text"></span></div>
-            <div class="add-information">
-                所在地区
-                <span class="area-width">
-                    <ul class="listArea none" data-role="none">
-                        <li class="summary-stock pad-right">
-                            <div class="dd">
-                                <div class="addrID"><div></div><b></b></div>
-                                <div class="store-selector">
-                                    <div class="text"><div data-role="none"></div></div>
+    <form id="formAddr" name="formAddr">
+        <section>
+            <div class="white-bg">
+                <div class="add-information">收货人 <span>
+                    <input type="hidden" id="id" name="id" value="-1">
+                    <input type="text" placeholder="输入姓名" class="input-text" name="name" id="name">
+                </span></div>
+                <div class="add-information">联系电话 <span>
+                    <input type="text" placeholder="输入手机号" class="input-text" name="phone" id="phone">
+                </span></div>
+                <div class="add-information">
+                    所在地区
+                    <span class="area-width">
+                        <ul class="listArea none" data-role="none">
+                            <li class="summary-stock pad-right">
+                                <div class="dd">
+                                    <div class="addrID"><div></div><b></b></div>
+                                    <div class="store-selector">
+                                        <div class="text">
+                                            <div data-role="none" id="region" name="region"></div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    </ul>
-                </span>
+                            </li>
+                        </ul>
+                    </span>
+                </div>
+                <div class="add-information">
+                    街道
+                    <span>
+                        <input type="text" placeholder="请填写街道" class="input-text" name="street" id="street">
+                    </span>
+                </div>
+                <div class="add-information margin-none">
+                    <input type="text" class="inputs address-width" placeholder="请填写详细地址，不少于5个字" name="addr" id="addr">
+                </div>
             </div>
-            <div class="add-information">
-                街道
-                <span>
-                    <input type="text" placeholder="请填写街道" class="input-text">
-                </span>
+            <div class="check-box">
+                <div class="check-left">
+                    <input type="checkbox" class="checks" name="default_flag" id="default_flag">
+                </div>
+                <div class="check-right">
+                    设置为默认地址
+                </div>
             </div>
-            <div class="add-information margin-none">
-                <input type="text" class="inputs address-width" placeholder="请填写详细地址，不少于5个字">
+            <div class="div-btn">
+                <input type="button" data-role="none" class="btn" value="确认" id="submit" name="submit">
             </div>
-        </div>
-        <div class="check-box">
-            <div class="check-left">
-                <input type="checkbox" class="checks" id="checkBox">
-            </div>
-            <div class="check-right">
-                设置为默认地址
-            </div>
-        </div>
-        <div class="div-btn">
-            <input type="button" data-role="none" class="btn" onclick="addLocation()" value="确认">
-        </div>
-    </section>
+        </section>
+    </form>
     <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/JBasic.js"></script>
     <script src="js/commonality.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/page/addaddress.js"></script>
     <script src="js/location.js"></script>
+
     <script>
-        //如果初始化为其他地区的，需要注意选择器的修改，传递不同的proid（省id），cityid：(市id) areaid：（县id），省市对应ID在location.js里面有定义，县id从京东动态加载
-        $('ul.listArea').Address({ proid: 642, cityid: 643, areaid: 1205 });//初始化Tab中的地址
-        $(".store-selector").find(".text div").html("请选择");//初始化文本框显示的地址
+        $(document).ready(function(){
+            var address = new AddressCURD();
+            address.init();
+
+            /*
+            * 如果初始化为其他地区的，需要注意选择器的修改，传递不同的proid（省id），cityid：(市id) areaid：（县id），
+            * 省市对应ID在location.js里面有定义，县id从京东动态加载
+             */
+            $('ul.listArea').Address({ proid: 642, cityid: 643, areaid: 1205 });//初始化Tab中的地址
+            $(".store-selector").find(".text div").html("请选择");//初始化文本框显示的地址
+        });
+    </script>
+
+    <script>
+
     </script>
 </body>
 </html>

@@ -9,30 +9,34 @@
 </head>
 <body>
     <header class="header">
-        <img src="img/back.png" width="8" class="header-img" onclick="back()"> 个人中心
+        <img src="img/back.png" width="8" class="header-img"> 实名认证
     </header>
     <section>
         <div class="section-top">
-            <img src="img/personal/img02.png" alt="" width="60">
-            <p id="nickname"></p>
+            <img src="img/personal/img05.png" alt="" width="60">
+            <p>认证提交成功，等待审核！</p>
         </div>
         <ul class="list">
-            <li>绑定手机号码 <span><a class="input" id="phone"></a></span></li>
-            <li>买家实名认证 <span><a class="input" id="buyerName"></a></span></li>
-            <li>卖家实名认证 <span><a class="input" id="sellerName"></a></span></li>
-            <li>收货地址管理 <span><a class="input" href="address.html">&nbsp;&nbsp;</a></span></li>
+            <li>姓名 <span class="span" id="buyerName"></span></li>
         </ul>
+        <div class="div-btn">
+            <input type="button" data-role="none" class="btn" onclick="next()" value="返回个人中心">
+        </div>
     </section>
     <script src="js/jquery-1.9.1.js"></script>
     <script src="js/JBasic.js"></script>
     <script src="js/commonality.js"></script>
     <script src="js/config.js"></script>
-    <script src="js/page/personal.js"></script>
     <script>
         $(document).ready(function(){
-            var personal = new Personal();
-            personal.init();
+            var basic = new $.JBasic();
+            var buyerName = decodeURIComponent(basic.getQueryString("buyerName"));
+            $("#buyerName").html(buyerName);
         });
+
+        function next(){
+            window.location="personal.html";
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <title></title>
+    <link rel="stylesheet" href="css/css.css"/>
+</head>
+<body>
+    <header class="header">
+        <img src="img/back.png" width="8" class="header-img"> 实名认证
+    </header>
+    <section>
+        <div class="section-top">
+            <img src="img/personal/img05.png" alt="" width="60">
+            <p>认证提交成功，等待审核！</p>
+        </div>
+        <ul class="list">
+            <li>姓名 <span class="span" id="sellerName"></span></li>
+            <li>店铺名称 <span class="span" id="shopName"></span></li>
+        </ul>
+        <div class="div-btn">
+            <input type="button" data-role="none" class="btn" onclick="next()" value="返回个人中心">
+        </div>
+    </section>
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/JBasic.js"></script>
+    <script src="js/commonality.js"></script>
+    <script src="js/config.js"></script>
+    <script>
+        $(document).ready(function(){
+            var basic = new $.JBasic();
+            var sellerName = decodeURIComponent(basic.getQueryString("sellerName"));
+            $("#sellerName").html(sellerName);
+            var shopName = decodeURIComponent(basic.getQueryString("shopName"));
+            $("#shopName").html(shopName);
+        });
+
+        function next(){
+            window.location="personal.html";
+        }
+    </script>
+</body>
+</html>
