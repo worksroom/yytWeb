@@ -164,15 +164,15 @@ $(function(){
         },"slow")
     }
     /*-------------评价-------------*/
-    $(".star-width .star").each(function () {
-        $(this).click(function () {
-            if($(this).hasClass("star2")){
-                $(this).nextAll().removeClass("star2");
-            }else {
-                $(this).prevAll().addClass("star2");
-            }
-        })
-    })
+    //$(".star-width .star").each(function () {
+    //    $(this).click(function () {
+    //        if($(this).hasClass("star2")){
+    //            $(this).nextAll().removeClass("star2");
+    //        }else {
+    //            $(this).prevAll().addClass("star2");
+    //        }
+    //    })
+    //})
     /*--------点击价钱时，由多到少--------*/
     //$(".dotey li:last-child").click(function () {
     //    if($(this).hasClass("active")){
@@ -261,9 +261,9 @@ function back() {
 //function openLocation() {//添加地址
 //    window.location="addlocation.html";
 //}
-function openEvaluate() {//评价
-    window.location="evaluate.html";
-}
+//function openEvaluate() {//评价
+//    window.location="evaluate.html";
+//}
 function openPay() {//立即购买
     window.location="affirm.html";
 }function addLocation() {//添加地址完成

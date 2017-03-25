@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <title></title>
+    <link rel="stylesheet" href="css/css.css"/>
+</head>
+<body>
+    <header class="header">
+        <img src="img/back.png" width="8" class="header-img" onclick="back()"> 发表评价
+    </header>
+    <section class="section">
+        <div class="white-bg" id="product_detail">
+            <div class="commodity padding border-bot white-bg">
+                <div class="commodity-img evaluate-img">
+                    <img src="img/img01.png" alt="">
+                </div>
+                <div class="commodity-cont">
+                    <p class="commodity-h1">DIC宝凤飓风DIC宝凤飓风QD亮光不结皮油墨（合版印刷专用）</p>
+                    <p class="commodity-h2">规格：POP-E 黄色  12罐/箱</p>
+                </div>
+            </div>
+
+            <div class="commodity padding border-bot white-bg">
+                <div class="commodity-img evaluate-img">
+                    <img src="img/img01.png" alt="">
+                </div>
+                <div class="commodity-cont evaluate-cont">
+                    <p class="commodity-h1">DIC宝凤飓风DIC宝凤飓风QD亮光不结皮油墨（合版印刷专用）</p>
+                    <p class="commodity-h2">规格：POP-E 黄色  12罐/箱</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="white-bg">
+            <div class="evaluate-title">
+                <div class="float">评分</div>
+                <div class="star-width">
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                </div>
+            </div>
+            <div class="evaluate-minute padding">
+                <div class="float">满分</div>
+                <div class="float minute"><textarea id="content" name="content" placeholder="商品满意吗？写下您的使用感受来帮助其他小伙伴~"
+                                                     class="textarea"></textarea></div>
+            </div>
+            <ul class="phone bg-none padding" id="phone">
+                <li></li>
+            </ul>
+        </div>
+    </section>
+    <footer class="footer white-bg padding-left">
+        <div class="address-check">
+            <div class="check-left check-top all-margin">
+                <input type="checkbox" class="checks" id="allSelect" name="allSelect">
+            </div>
+            <div class="check-right">
+                <em><font class="all-select">匿名评价</font></em>
+                <span>
+                    <input type="button" id="submit_evaluate" value="发表评价" class="buy-btn evaluate-bg">
+                </span>
+            </div>
+        </div>
+    </footer>
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/JBasic.js"></script>
+    <script src="js/commonality.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/page/evaluate.js"></script>
+    <script>
+        $(document).ready(function () {
+            var evaluate = new Evaluate();
+            evaluate.init();
+
+//            var objul = document.getElementsByTagName("ul")[1];
+//            var lis = objul.getElementsByTagName("li");
+//            var perLiVal = 100 / lis.length - 0.1;
+//            $(".phone li").css({width: perLiVal + "%"});
+        });
+
+    </script>
+</body>
+</html>
