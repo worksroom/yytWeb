@@ -48,13 +48,7 @@ $(function(){
     //    $(".dotey-display").eq(index).show().siblings().hide();
     //})
     /*-----点击全选时，购物车按钮全部选中--------*/
-    $("#allSelect").click(function(){
-        if($(this).hasClass("checks2")){
-            $("input[name='checkbox']").addClass("checks2");
-        }else{
-            $("input[name='checkbox']").removeClass("checks2");
-        }
-    })
+
     /*--------点击选中公司时，同时选中公司产品-------*/
     var companyCheck=$(".isSelect input[type='checkbox']");
     companyCheck.click(function(){

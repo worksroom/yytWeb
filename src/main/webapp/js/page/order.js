@@ -1,6 +1,7 @@
 "use strict";
 class Order {
     constructor() {
+
         this.url = window.params.url;
         this.imgurl = window.params.imgurl;
         this.order_url = this.url + "/api/web/login/order/orderlist";
