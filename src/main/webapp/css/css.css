@@ -54,6 +54,11 @@ em,i{
 }
 .section{
     overflow: hidden;
+    /*margin-bottom: 5rem;*/
+    margin-bottom: 2px;
+}
+.section_bottom{
+    overflow: hidden;
     margin-bottom: 5rem;
 }
 .section-top{
@@ -738,13 +743,59 @@ img{
     border: none;
     width: 82%;
 }
-.phone li{
+.phone .addimg{
     width: 70px;
     height: 70px;
     border:1px solid #d1d1d1;
     background: url("../img/icon10.png") no-repeat center;
     background-size: 50%;
+    float: left;
 }
+
+.phone .viewimg{
+    width: 70px;
+    height: 70px;
+    border:1px solid #d1d1d1;
+    background-size: 50%;
+    float: left;
+}
+
+.phone .viewimg .upload-img {
+    float: left;
+    margin-left: 1px;
+    /*border:1px solid #d1d1d1;*/
+    display: -webkit-box;
+    display: -moz-box;
+    display: -moz-box;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    box-pack: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    box-align: center;
+    position: relative;
+}
+
+.phone .viewimg .upload-img:nth-child(3n) {
+    /*margin-right: 0;*/
+}
+
+.phone .viewimg .upload-img img {
+    width: 70px;
+    height: 70px;
+}
+
+.phone .viewimg .upload-img .delete-img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    background: url("../img/icon08.png") no-repeat center center;
+    background-size: 100%;
+}
+
+
 .classify{
     position: absolute;
     right: 10px;

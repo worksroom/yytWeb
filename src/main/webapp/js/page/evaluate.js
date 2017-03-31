@@ -22,6 +22,8 @@ class Evaluate {
                         $.each(order.list, function(index, value, array) {
                             _this.appendRow($("#product_detail"), value, index);
                         });
+
+                        _this.event();
                     }
                     else {
                         _this.basic.toast("请稍后再试..");
@@ -36,7 +38,10 @@ class Evaluate {
             'GET'
         );
 
-        //评价星级绑定点击事件
+    }
+
+    event(){
+        var _this = this;
         $(".star-width .star").each(function (index) {
             $(this).click(function () {
                 if($(this).hasClass("star2")){
@@ -56,6 +61,8 @@ class Evaluate {
 
     //订单内商品DOM处理
     appendRow(productDetailTable, productVO, orderIndex){
+        var section = $('<section class="section" goodsId="'+orderIndex+'"></section>');
+        var firstWhiteBgDiv = $('<div class="white-bg"></div>');
         var productDetailDiv = $('<div class="commodity padding border-bot white-bg"></div>');
 
         var html = '<div class="commodity-img evaluate-img"><img src="img/img01.png" alt=""></div>';
@@ -66,17 +73,63 @@ class Evaluate {
         html += '</div>';
 
         productDetailDiv.append($(html));
-        productDetailTable.append(productDetailDiv);
+        firstWhiteBgDiv.append(productDetailDiv);
+        section.append(firstWhiteBgDiv);
+
+        var secWhiteBgDiv = $('<div class="white-bg"></div>');
+
+        var secHtml = '<div class="evaluate-title">';
+        secHtml += '<div class="float">评分</div>';
+        secHtml += '<div class="star-width">';
+        secHtml += '<div class="star"></div>';
+        secHtml += '<div class="star"></div>';
+        secHtml += '<div class="star"></div>';
+        secHtml += '<div class="star"></div>';
+        secHtml += '<div class="star"></div>';
+        secHtml += '</div>';
+        secHtml += '</div>';
+        secHtml += '<div class="evaluate-minute padding">';
+        secHtml += '<div class="float">满分</div>';
+        secHtml += '<div class="float minute">';
+        secHtml += '<textarea id="content" name="content" placeholder="商品满意吗？写下您的使用感受来帮助其他小伙伴~" class="textarea"></textarea>';
+        secHtml += '</div>';
+        secHtml += '</div>';
+        secHtml += '<ul class="phone bg-none padding" id="img_ul">';
+        secHtml += '<li class="addimg" id="phoneUpload" name="phoneUpload"></li>';
+        secHtml += '</ul>';
+        secHtml += '<input type="file" id="uploadButton" name="uploadButton" accept="image/*" style="height:0px;width:0px;border:0px;display:none;" />';
+
+        secWhiteBgDiv.append($(secHtml));
+        section.append(secWhiteBgDiv);
+
+        productDetailTable.append(section);
     }
 
     submit(){
-        var star = $(".star-width .star2").length;
-        var content = $("#content").val();
+        var evaluateData = new Array();
+        var rows = $("#product_detail section");
+        $.each(rows, function (i, item){
+            var evaluate = new Object();
+            var star = $(item).find(".star-width .star2").length;
+            var content = $(item).find("[name='content']").val();
+
+            var imgs = $(item).find(".phone .viewimg img");
+            var img_list = new Array();
+            $.each(imgs, function (i, item){
+                img_list.push($(item)[0].src);
+            });
+
+            evaluate.star = star;
+            evaluate.content = content;
+            evaluate.imgarray = img_list;
+            evaluate.goodsId = 1;
+            evaluateData.push(evaluate);
+        });
+
         var anonymous=0;
         if($('#allSelect').attr('checked')){
             anonymous = 1;
         }
-        alert('star='+star+", content="+content+", anonymous="+anonymous);
 
         var _this = this;
         _this.basic.doRequest(
@@ -98,9 +151,8 @@ class Evaluate {
             _this.basic.getUaHeadParam(),
             {
                 "orderId": _this.basic.getQueryString("orderId"),
-                "star": star,
-                "content": content,
-                "anonymous": anonymous
+                "anonymous": anonymous,
+                "evaluateData": JSON.stringify(evaluateData)
             },
             'POST'
         );

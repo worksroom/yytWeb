@@ -94,7 +94,7 @@ class Order {
             orderTitle.append($('<span><a href="javascript:;">等待卖家发货</a></span>'));
         } else if(order['status']==2){
             orderTitle.append($('<span><a href="javascript:;">卖家已发货</a></span>'));
-        } else if(order['status']==3){
+        } else if(order['status']==3 || order['status']==5){
             orderTitle.append($('<span><a href="javascript:;">交易成功</a></span>'));
         }
 
@@ -132,6 +132,8 @@ class Order {
             bottomDiv.append($('<span><input type="button" value="查看物流" class="order-btn order-border margin-right"><input type="button" value="确认收货" class="order-btn"></span>'));
         } else if(order['status']==3){
             bottomDiv.append($('<span><input type="button" value="评价" onclick="openEvaluate('+order['orderId']+')" class="order-btn"></span>'));
+        } else if(order['status']==5){
+            bottomDiv.append($('<span><input type="button" value="已评价" class="order-btn"></span>'));
         }
 
 

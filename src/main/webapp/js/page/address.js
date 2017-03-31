@@ -6,10 +6,14 @@ class Address {
         this.addressList_url = this.url + "/api/web/address/addressList";//查询收货地址列表
         this.address_del_url = this.url + "/api/web/address/delete";//删除收货地址
         this.basic = new $.JBasic();
+        this.auth = new LoginAuth();
     }
 
     init() {
         var _this = this;
+        if(_this.auth.isLogin()==false){
+            return;
+        }
         _this.basic.doRequest(
             this.addressList_url,
             function (result, data) {

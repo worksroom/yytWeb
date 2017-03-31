@@ -1,4 +1,4 @@
 window.params = {
-    url:"http://127.0.0.1:8080",
-    imgurl:"http://127.0.0.1:8088/lakeside/"
+    url:"http://192.168.1.111:8080",
+    imgurl:"http://192.168.1.111:8088/lakeside/"
 };

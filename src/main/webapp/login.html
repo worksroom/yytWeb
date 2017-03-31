@@ -126,12 +126,12 @@
 
         <div id="content-input1">
             <img src="img/login/icon_people.png">
-            <input type="text" placeholder="请输入用户名/手机号" value="admin" id="username" name="username">
+            <input type="text" placeholder="请输入用户名/手机号" value="zhangsan" id="username" name="username">
         </div>
 
         <div id="content-input2">
             <img src="img/login/icon_password.png">
-            <input type="password" placeholder="请输入密码" value="admin" id="password" name="password">
+            <input type="password" placeholder="请输入密码" value="111111" id="password" name="password">
         </div>
 
         <div id="content-loginBtn">
@@ -150,5 +150,11 @@
 <script src="js/commonality.js"></script>
 <script src="js/config.js"></script>
 <script src="js/page/login.js"></script>
+<script>
+    $(document).ready(function(){
+        var login = new Login();
+        login.init();
+    });
+</script>
 </body>
 </html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <title>使用html5 FileReader获取图片，并异步上传到服务器(not iframe)</title>
+
+    <style type="text/css">
+        body {
+            margin: 0px;
+            background: #f2f2f0;
+        }
+
+        p {
+            margin: 0px;
+        }
+
+        .title {
+            color: #FFFF00;
+            background: #000000;
+            text-align: center;
+            font-size: 24px;
+            line-height: 50px;
+            font-weight: bold;
+        }
+
+        .file {
+            position: absolute;
+            width: 100%;
+            font-size: 90px;
+        }
+
+        .filebtn {
+            display: block;
+            position: relative;
+            height: 110px;
+            color: #FFFFFF;
+            background: #06980e;
+            font-size: 48px;
+            line-height: 110px;
+            text-align: center;
+            cursor: pointer;
+            border: 3px solid #cccccc;
+        }
+
+        .filebtn:hover {
+            background: #04bc0d;
+        }
+
+        .showimg {
+            margin: 10px auto 10px auto;
+            text-align: center;
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var input = document.getElementById("J-btn-cont2");
+            var img_area = document.getElementById("ul-box");
+            if (typeof (FileReader) === 'undefined') {
+                alert('您的浏览器不支持FileReader属性，请换一个主流浏览器');
+                input.setAttribute('disabled', 'disabled');
+            } else {
+                $('#J-btn-cont2').on('change', 'input[type=file]', function () {
+                    var length = $('#ul-box li').length;
+                    if (length >= 3) {
+                        alert('最多只能上传三张图片');
+                        return false;
+                    } else {
+                        var file = this.files[0];
+                        readFile(file);
+                    }
+                })
+            }
+
+            function readFile(file) {
+                if (!/image\/\w+/.test(file.type)) {
+                    alert("请确保文件为图像类型");
+                    return false;
+                }
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function (e) {
+                    var carousel = this.result;
+                    alert(carousel);
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+<p class="title">使用html5 FileReader获取图片，并异步上传到服务器(not iframe)</p>
+
+<p><input type="file" class="file" id="J-btn-cont2"><label class="filebtn" for="img" title="JPG,GIF,PNG">请选择图片</label></p>
+
+<p class="showimg" id="ul-box"></p>
+</body>
+</html>  

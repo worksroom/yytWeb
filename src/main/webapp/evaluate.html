@@ -11,50 +11,45 @@
     <header class="header">
         <img src="img/back.png" width="8" class="header-img" onclick="back()"> 发表评价
     </header>
-    <section class="section">
-        <div class="white-bg" id="product_detail">
-            <div class="commodity padding border-bot white-bg">
-                <div class="commodity-img evaluate-img">
-                    <img src="img/img01.png" alt="">
-                </div>
-                <div class="commodity-cont">
-                    <p class="commodity-h1">DIC宝凤飓风DIC宝凤飓风QD亮光不结皮油墨（合版印刷专用）</p>
-                    <p class="commodity-h2">规格：POP-E 黄色  12罐/箱</p>
+    <div class="sectionlist" id="product_detail">
+        <section class="section">
+            <div class="white-bg">
+                <div class="commodity padding border-bot white-bg">
+                    <div class="commodity-img evaluate-img">
+                        <img src="img/img01.png" alt="">
+                    </div>
+                    <div class="commodity-cont evaluate-cont">
+                        <p class="commodity-h1">DIC宝凤飓风DIC宝凤飓风QD亮光不结皮油墨（合版印刷专用）</p>
+                        <p class="commodity-h2">规格：POP-E 黄色  12罐/箱</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="commodity padding border-bot white-bg">
-                <div class="commodity-img evaluate-img">
-                    <img src="img/img01.png" alt="">
+            <div class="white-bg">
+                <div class="evaluate-title">
+                    <div class="float">评分</div>
+                    <div class="star-width">
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                    </div>
                 </div>
-                <div class="commodity-cont evaluate-cont">
-                    <p class="commodity-h1">DIC宝凤飓风DIC宝凤飓风QD亮光不结皮油墨（合版印刷专用）</p>
-                    <p class="commodity-h2">规格：POP-E 黄色  12罐/箱</p>
+                <div class="evaluate-minute padding">
+                    <div class="float">满分</div>
+                    <div class="float minute">
+                        <textarea id="content" name="content" placeholder="商品满意吗？写下您的使用感受来帮助其他小伙伴~" class="textarea"></textarea>
+                    </div>
                 </div>
+                <ul class="phone bg-none padding" id="img_ul" name="img_ul">
+                    <li class="addimg" id="phoneUpload" name="phoneUpload"></li>
+                </ul>
+                <input type="file" id="uploadButton" name="uploadButton" accept="image/*" style="height:0px;width:0px;border:0px;display:none;" />
             </div>
-        </div>
-
-        <div class="white-bg">
-            <div class="evaluate-title">
-                <div class="float">评分</div>
-                <div class="star-width">
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                </div>
-            </div>
-            <div class="evaluate-minute padding">
-                <div class="float">满分</div>
-                <div class="float minute"><textarea id="content" name="content" placeholder="商品满意吗？写下您的使用感受来帮助其他小伙伴~"
-                                                     class="textarea"></textarea></div>
-            </div>
-            <ul class="phone bg-none padding" id="phone">
-                <li></li>
-            </ul>
-        </div>
-    </section>
+        </section>
+    </div>
+    <section class="section_bottom"></section>
     <footer class="footer white-bg padding-left">
         <div class="address-check">
             <div class="check-left check-top all-margin">
@@ -73,10 +68,24 @@
     <script src="js/commonality.js"></script>
     <script src="js/config.js"></script>
     <script src="js/page/evaluate.js"></script>
+    <script src="js/crop/evaluate_upload.js"></script>
     <script>
         $(document).ready(function () {
             var evaluate = new Evaluate();
             evaluate.init();
+
+            var rows = $("#product_detail section");
+            $.each(rows, function (i, item){
+                var ul = $(item).find('ul');
+                var li = $(item).find('ul').find("[name='phoneUpload']");
+
+                var button = $(item).find("[name='uploadButton']");
+
+                var evaluateUpload = new EvaluateUpload(li, ul, button);
+                evaluateUpload.init();
+            });
+
+
 
 //            var objul = document.getElementsByTagName("ul")[1];
 //            var lis = objul.getElementsByTagName("li");

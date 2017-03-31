@@ -37,7 +37,9 @@ public class ProductLoginAction {
         per.setBuyUserId(userId);
         per.setGoodsId(goodId);
         per.setDes(des);
-        int result = productRpcService.commentGoods(per);
+        String content = "";
+        int sellerId = 1;
+        int result = productRpcService.rate(userId,sellerId,orderId,1,star,content,"",1);
         JSONObject json = new JSONObject();
         if(result>0){
 

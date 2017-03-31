@@ -343,6 +343,7 @@
 					url:url,
 					type:method,
 					data:queryParam,
+					async: false,
 					beforeSend: function(xhr) {
 						if(headParam){
 							for(name in headParam){

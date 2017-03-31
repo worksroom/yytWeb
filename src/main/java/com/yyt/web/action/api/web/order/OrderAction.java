@@ -1,6 +1,8 @@
 package com.yyt.web.action.api.web.order;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.youguu.core.logging.Log;
 import com.youguu.core.logging.LogFactory;
 import com.youguu.core.util.PageHolder;
@@ -207,11 +209,11 @@ public class OrderAction {
     @Produces("text/json;charset=UTF-8")
     public String evaluate(@HeaderParam("userId") int userId,
                            @FormParam("orderId") String orderId,
-                           @FormParam("star") int star,
-                           @FormParam("content") String content,
-                           @FormParam("img") String img,
-                           @FormParam("anonymous") int anonymous) {
+                           @FormParam("anonymous") int anonymous,
+                           @FormParam("evaluateData") String evaluateData) {
         JSONObject result = new JSONObject();
+
+        List<EvaluateVO> evaluateVOList = JSONArray.parseArray(evaluateData, EvaluateVO.class);
 
         Orders order = service.getOrders(orderId);
         if(null==order){
@@ -219,18 +221,12 @@ public class OrderAction {
             return result.toJSONString();
         }
 
-        ProductEvaluateRecord record = new ProductEvaluateRecord();
-//        record.setGoodsId();
-        record.setSellUserId(order.getSellUserId());
-        record.setBuyUserId(userId);
-        record.setOrderId(orderId);
-//        record.setDes();
-        record.setStar(star);
-        record.setContent(content);
-        record.setImg(img);
-        record.setCreateTime(new Date());
-        int dbFlag = productRpcService.rate(userId,order.getSellUserId(),orderId,1,star,content,"",anonymous);
-
+        int dbFlag = 0;
+        if(null!=evaluateVOList && evaluateVOList.size()>0){
+            for(EvaluateVO vo : evaluateVOList){
+                dbFlag = productRpcService.rate(userId, order.getSellUserId(), orderId, vo.getGoodsId(), vo.getStar(), vo.getContent(), vo.getImgarray(), anonymous);
+            }
+        }
 
         if(dbFlag>0){
             result.put("status","0000");
